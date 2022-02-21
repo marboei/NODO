@@ -8,5 +8,6 @@ public class Project {
     [MaxLength(100)]
     public string Title { get; set; }
     
+    //Navigation Property
     public List<Column>? Columns { get; set; }
 }

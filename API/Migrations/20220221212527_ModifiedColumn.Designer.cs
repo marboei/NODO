@@ -2,6 +2,7 @@
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221212527_ModifiedColumn")]
+    partial class ModifiedColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
@@ -34,7 +36,7 @@ namespace API.Migrations
 
                     b.HasIndex("ColumnId");
 
-                    b.ToTable("Cards");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("API.Models.Column", b =>
@@ -76,11 +78,13 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.Card", b =>
                 {
-                    b.HasOne("API.Models.Column", null)
+                    b.HasOne("API.Models.Column", "Column")
                         .WithMany("Cards")
                         .HasForeignKey("ColumnId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Column");
                 });
 
             modelBuilder.Entity("API.Models.Column", b =>

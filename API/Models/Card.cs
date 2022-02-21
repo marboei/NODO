@@ -7,5 +7,5 @@ public class Card {
     public string Title { get; set; }
 
     public int ColumnId { get; set; }
-    public Column Column { get; set; }
+    
 }
