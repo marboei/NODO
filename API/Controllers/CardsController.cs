@@ -16,8 +16,8 @@ public class CardsController : ControllerBase{
     [Route("api/projects/{projectId}/columns/{columnId}/cards")]
     [HttpGet]
     public async Task<IActionResult> GetAll(int projectId, int columnId) {
-        if (_context.Projects.Find(projectId) == null) return NotFound($"No projects found with Id: {projectId}");
-        if (_context.Columns.Find(columnId) == null) return NotFound($"No columns found with Id: {columnId}");
+        if (_context.Projects.SingleOrDefault(p=>projectId == p.Id) == null) return NotFound($"No projects found with Id: {projectId}");
+        if (_context.Columns.SingleOrDefault(c=>columnId == c.Id) == null) return NotFound($"No columns found with Id: {columnId}");
 
         var cards = await _context.Cards.Where(c => c.ColumnId == columnId).ToListAsync();
         return Ok(cards);
