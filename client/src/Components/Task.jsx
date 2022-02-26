@@ -1,11 +1,10 @@
 
 import * as React from 'react';
-import {Box, ClickAwayListener, Grid, IconButton, Paper, styled, TextField, Typography} from "@mui/material";
+import {ClickAwayListener, Grid, IconButton, Paper, styled, TextField} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useState} from "react";
-import agent from "../Data/agent";
 
-
+//styling for task card
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     color: theme.palette.text.secondary,
@@ -14,21 +13,24 @@ const Item = styled(Paper)(({ theme }) => ({
     lineHeight: '60px',
 }));
 
-export const Task = ({task, handleDelete, updateTask, column}) => {
-
+export const Task = ({task, handleDelete, updateTask}) => {
+    
     const [taskClicked, setTaskClicked] = useState(false);
+    
     const [updatedTask, setUpdatedTask] = useState(task);
-
+    
+    //changes the taskClicked state to true if a task is clicked 
     const handleTaskClick = () => {
         setTaskClicked(true)
     };
-
+    //changes taskClicked state to false if user clicks outside of card
     const handleClickAway = () => {
         setTaskClicked(false);
     };
-    
+    //handles the updated task form when submitted
     const handleSubmit = async (e) => {
             e.preventDefault();
+            //called from parent component(Column)
             updateTask(updatedTask, task.id)
             setTaskClicked(false);
     }
@@ -36,6 +38,7 @@ export const Task = ({task, handleDelete, updateTask, column}) => {
     return (
         <div>
             {
+                //if task is clicked renders a form to update task, otherwise it renders the card itself
                 taskClicked ? (
                     <ClickAwayListener onClickAway={handleClickAway}>
                         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
