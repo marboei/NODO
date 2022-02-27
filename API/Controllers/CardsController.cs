@@ -22,6 +22,14 @@ public class CardsController : ControllerBase{
         var cards = await _context.Cards.Where(c => c.ColumnId == columnId).ToListAsync();
         return Ok(cards);
     }
+
+    [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}")]
+    [HttpGet]
+    public async Task<IActionResult> GetById(int projectId, int columnId, int cardId) {
+        var card = await _context.Cards.SingleOrDefaultAsync(c => c.Id == cardId);
+        return Ok(card);
+    }
+    
     [Route("api/projects/{projectId}/columns/{columnId}/cards")]
     [HttpPost]
     public async Task<IActionResult> CreateAsync(int projectId, int columnId, [FromBody]CardDto dto) {
@@ -52,6 +60,9 @@ public class CardsController : ControllerBase{
         if(card == null) return NotFound($"No Cards found with Id: {id}");
         
         card.Title = dto.Title;
+        if (dto.ColumnId != null) {
+            card.ColumnId = dto.ColumnId ?? card.ColumnId;
+        }
         _context.SaveChanges();
         
         return Ok(card);

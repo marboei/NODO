@@ -9,6 +9,7 @@ const column = {
         const response = await api.get('projects/1/columns');
         return response.data
     },
+    
     add: async(column) => {
         const response = await api.post('projects/1/columns', column);
         return response.data;
@@ -38,6 +39,10 @@ const task = {
     },
     update: async (columnId, taskId, task) => {
         const response = await api.put(`projects/1/columns/${columnId}/cards/${taskId}`, task);
+        return response.data
+    },
+    getById: async (columnId, taskId) => {
+        const response = await api.get(`projects/1/columns/${columnId}/cards/${taskId}`);
         return response.data
     }
 }

@@ -5,10 +5,13 @@ import {Fab, Grid} from "@mui/material";
 import {useEffect, useState} from "react";
 import agent from "../Data/agent";
 import AddIcon from '@mui/icons-material/Add';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend"
 
 
 export const ProjectPage = () => {
     const [columns, setColumns] = useState([]);
+    
     
    
 
@@ -41,21 +44,25 @@ export const ProjectPage = () => {
     }
     
     
+    
+    
     return (
         <div>
-            {/*renders all columns*/}
-            <Grid container>
-                {columns.map(column =>  (
-                    <Grid item xs={3} key={column.id}>
-                        <Column column={column} handleDeleteColumn={handleDeleteColumn} updateColumn={updateColumn}/>
+            <DndProvider backend={HTML5Backend}>
+                {/*renders all columns*/}
+                <Grid container>
+                    {columns.map(column =>  (
+                        <Grid item xs={3} key={column.id}>
+                            <Column column={column} handleDeleteColumn={handleDeleteColumn} updateColumn={updateColumn}/>
+                        </Grid>
+                    ))}
+                    <Grid item xs={3} alignSelf='center'>
+                        <Fab color="secondary" aria-label="add" sx={{verticalAlign: 'middle'}} onClick={handleAddColumn}>
+                            <AddIcon />
+                        </Fab>
                     </Grid>
-                ))}
-                <Grid item xs={3} alignSelf='center'>
-                    <Fab color="secondary" aria-label="add" sx={{verticalAlign: 'middle'}} onClick={handleAddColumn}>
-                        <AddIcon />
-                    </Fab>
                 </Grid>
-            </Grid>
+            </DndProvider>
         </div>
     );
 };

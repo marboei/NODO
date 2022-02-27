@@ -3,6 +3,7 @@ import * as React from 'react';
 import {ClickAwayListener, Grid, IconButton, Paper, styled, TextField} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useState} from "react";
+import { useDrag } from "react-dnd";
 
 //styling for task card
 const Item = styled(Paper)(({ theme }) => ({
@@ -13,11 +14,20 @@ const Item = styled(Paper)(({ theme }) => ({
     lineHeight: '60px',
 }));
 
-export const Task = ({task, handleDelete, updateTask}) => {
+export const Task = ({task, handleDelete, updateTask, removeTaskAfterDrag}) => {
     
     const [taskClicked, setTaskClicked] = useState(false);
     
     const [updatedTask, setUpdatedTask] = useState(task);
+    
+    const [{isDragging}, drag] = useDrag(() => ({
+        type: "task",
+        item: {id: task.id, columnId: task.columnId, title: task.title},
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+        end: (item) => removeTaskAfterDrag(item.id, item.columnId)
+    }))
     
     //changes the taskClicked state to true if a task is clicked 
     const handleTaskClick = () => {
@@ -49,7 +59,7 @@ export const Task = ({task, handleDelete, updateTask}) => {
                     </ClickAwayListener>
                     
                 ) : (
-                    <Item elevation={16} sx={{ margin: 2 }} onClick={handleTaskClick}>
+                    <Item elevation={16} sx={{ margin: 2 }} onClick={handleTaskClick} ref={drag}>
                         <Grid container>
                             <Grid item xs={8}>
                                 <div>

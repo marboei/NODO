@@ -10,21 +10,41 @@ import {Task} from "./Task";
 import {useEffect, useState} from "react";
 import agent from "../Data/agent";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useDrop } from "react-dnd";
 
-export const Column = ({column, handleDeleteColumn, updateColumn }) => {
+export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) => {
     
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [columnClicked, setColumnClicked] = useState(false);
     const [updatedColumn, setUpdatedColumn] = useState(column);
+    const [dropped, setDropped] = useState(false);
+    
+    
+    const [{isOver, monitor}, drop] = useDrop(() => ({
+        accept: "task",
+        drop: async (item) => {
+            await addTaskToColumn(item.id, item.columnId, item.title)
+        }
+    }))
+    
+    
     
     //fetches tasks from db according to it's column and stores them in tasks state
-    useEffect(() => {
-        async function fetchTasks(){
-            setTasks(await agent.task.getAll(column.id))
-        }
-        fetchTasks();
-    },[column.id])
+    useEffect( async () => {
+
+        setTasks(await agent.task.getAll(column.id))
+        setDropped(false)
+
+
+    },[column.id, dropped])
+
+    const addTaskToColumn = async (id, columnId, title) => {
+        
+        const addedTask = await agent.task.update(columnId, id, {title: title, columnId: column.id})
+        setTasks(await agent.task.getAll(column.id))
+        setDropped(true)
+    }
     
     //handles task deletion
     //>passes this function to child component(Task) to take an individual task id as a parameter
@@ -37,9 +57,6 @@ export const Column = ({column, handleDeleteColumn, updateColumn }) => {
     //creates a new task after user submits the creation form
     const handleNewTaskSubmit = async (e) => {
         e.preventDefault();
-        if (newTask) {
-            console.log(newTask);
-        }
 
         const addedTask = await agent.task.add(column.id, {title: newTask})
         setTasks([...tasks, addedTask])
@@ -74,16 +91,21 @@ export const Column = ({column, handleDeleteColumn, updateColumn }) => {
         setColumnClicked(false);
        
     }
+    
+    const removeTaskAfterDrag = async (id, columnId) => {
+        if (columnId === column.id) {
+            let tasksAfterRemoved = await agent.task.getAll(column.id)
+            
+            setTasks(tasksAfterRemoved.filter(t => t.id !== id))
+        }
 
-
-
-
-
+    }
+    
     return (
-        <div>
+        <div >
             {/*renders tasks inside column*/}
             <Card sx={{ maxWidth: 400, margin: 2, bgcolor: '#a8a69e' }}>
-                <CardContent>
+                <CardContent ref={drop}>
                     {
                         columnClicked ? (
                             <ClickAwayListener onClickAway={handleClickAway}>
@@ -113,7 +135,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn }) => {
                     
                     {/*renders all tasks*/}
                     {tasks.map(task => (
-                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} />
+                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag} />
                     ))}
                     {/*renders new task form*/}
                     <form noValidate autoComplete="off" onSubmit={handleNewTaskSubmit}>
