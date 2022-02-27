@@ -2,18 +2,21 @@
 import * as React from 'react';
 import {
     Card,
-    CardContent,
+    CardContent, ClickAwayListener, Grid, IconButton,
     TextField,
     Typography
 } from "@mui/material";
 import {Task} from "./Task";
 import {useEffect, useState} from "react";
 import agent from "../Data/agent";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export const Column = ({column}) => {
+export const Column = ({column, handleDeleteColumn, updateColumn }) => {
     
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
+    const [columnClicked, setColumnClicked] = useState(false);
+    const [updatedColumn, setUpdatedColumn] = useState(column);
     
     //fetches tasks from db according to it's column and stores them in tasks state
     useEffect(() => {
@@ -32,7 +35,7 @@ export const Column = ({column}) => {
     }
     
     //creates a new task after user submits the creation form
-    const handleSubmit = async (e) => {
+    const handleNewTaskSubmit = async (e) => {
         e.preventDefault();
         if (newTask) {
             console.log(newTask);
@@ -55,22 +58,65 @@ export const Column = ({column}) => {
         await agent.task.update(column.id, id, updatedTask)
     }
 
-    
+    //changes the taskClicked state to true if a task is clicked 
+    const handleColumnClick = () => {
+        setColumnClicked(true)
+    };
+    //changes taskClicked state to false if user clicks outside of card
+    const handleClickAway = () => {
+        setColumnClicked(false);
+    };
+    //handles the updated task form when submitted
+    const handleColumnUpdateSubmit = async (e) => {
+        e.preventDefault();
+        //called from parent component(Column)
+        updateColumn(updatedColumn, column.id)
+        setColumnClicked(false);
+       
+    }
+
+
+
+
+
     return (
         <div>
             {/*renders tasks inside column*/}
             <Card sx={{ maxWidth: 400, margin: 2, bgcolor: '#a8a69e' }}>
                 <CardContent>
-                    {/*column header*/}
-                    <Typography gutterBottom variant="h5" component="div">
-                        {column.title}
-                    </Typography>
+                    {
+                        columnClicked ? (
+                            <ClickAwayListener onClickAway={handleClickAway}>
+                                <form noValidate autoComplete="off" onSubmit={handleColumnUpdateSubmit}>
+                                    <TextField
+                                        onChange={(e) => setUpdatedColumn({id: column.id, title: e.target.value})}
+                                        value={updatedColumn.title}  id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>
+                                </form>
+                            </ClickAwayListener>
+
+                        ) : (
+                        <Grid container>
+                        <Grid item xs={8}>
+                        <Typography variant='h6' onClick={handleColumnClick}>
+                    {column.title}
+                        </Typography>
+                        </Grid>
+
+                        <Grid item xs={4}>
+                        <IconButton aria-label="delete" onClick={() => handleDeleteColumn(column.id)} >
+                        <DeleteIcon fontSize="small"/>
+                        </IconButton>
+                        </Grid>
+                        </Grid>
+                        )
+                    }
+                    
                     {/*renders all tasks*/}
                     {tasks.map(task => (
                             <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} />
                     ))}
                     {/*renders new task form*/}
-                    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                    <form noValidate autoComplete="off" onSubmit={handleNewTaskSubmit}>
                         <TextField onChange={(e) => setNewTask(e.target.value)} 
                                     value={newTask} id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>
                     </form>

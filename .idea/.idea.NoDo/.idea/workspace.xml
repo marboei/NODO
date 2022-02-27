@@ -5,26 +5,15 @@
     <projectFile profileName="IIS Express">API/API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="&gt;Created react app&#10;&gt;Created basic task management functionality(remove,add,update)">
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/15dec34049ef0b07f8f96a56fb52dca4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/17c64d2964f0c02d20a85e252200aac1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/2d3a975def344e9b36ee14c10b9eedf3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/2dc38d891423ed3c30dd1b43a47cb143.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/43f52c0db60faa668cc619d368b147bd.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/4d07697cb413e665987bad7ba6b4bdbf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/5b57f09537b06bef4fa6289bb88d8618.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/69d7b73459871a14964b1780a26c1e0c.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/6a539de447a109fe57526bb4ceb15831.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/9c229dc482eeed9be7e2fba5f699167f.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/a6f0ef6d2579815d6c79b916d64026c6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/ccef142c197bed9b40416df1c59c55ca.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/node_modules/.cache/babel-loader/f81450417c1104c7568e3540d1807244.json" afterDir="false" />
+    <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" afterDir="false" />
@@ -135,7 +124,10 @@
       <workItem from="1645827284051" duration="2697000" />
       <workItem from="1645839608604" duration="3062000" />
       <workItem from="1645848843856" duration="16000" />
-      <workItem from="1645848964284" duration="3415000" />
+      <workItem from="1645848964284" duration="4106000" />
+      <workItem from="1645911286034" duration="668000" />
+      <workItem from="1645912498641" duration="1687000" />
+      <workItem from="1645930672119" duration="2067000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1645400799268</created>
@@ -165,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645849273437</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&gt;Refactored agent file&#10;&gt;Added some comments">
+      <created>1645852458536</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645852458536</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +190,8 @@
     <MESSAGE value="&gt; Added ApplicationDbContext&#10;&gt; Added base models&#10;&gt; Added the first migration to db" />
     <MESSAGE value="&gt;Added Project Controller&#10;&gt;Added Columns Controller&#10;&gt;Added Cards Controller&#10;&gt;Modified navigation fields in models" />
     <MESSAGE value="&gt;Created react app&#10;&gt;Created basic task management functionality(remove,add,update)" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt;Created react app&#10;&gt;Created basic task management functionality(remove,add,update)" />
+    <MESSAGE value="&gt;Refactored agent file&#10;&gt;Added some comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt;Refactored agent file&#10;&gt;Added some comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

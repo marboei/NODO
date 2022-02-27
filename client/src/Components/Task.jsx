@@ -28,7 +28,7 @@ export const Task = ({task, handleDelete, updateTask}) => {
         setTaskClicked(false);
     };
     //handles the updated task form when submitted
-    const handleSubmit = async (e) => {
+    const handleTaskUpdateSubmit = async (e) => {
             e.preventDefault();
             //called from parent component(Column)
             updateTask(updatedTask, task.id)
@@ -41,7 +41,7 @@ export const Task = ({task, handleDelete, updateTask}) => {
                 //if task is clicked renders a form to update task, otherwise it renders the card itself
                 taskClicked ? (
                     <ClickAwayListener onClickAway={handleClickAway}>
-                        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                        <form noValidate autoComplete="off" onSubmit={handleTaskUpdateSubmit}>
                             <TextField
                                 onChange={(e) => setUpdatedTask({id: task.id, title: e.target.value})}
                                 value={updatedTask.title}  id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>

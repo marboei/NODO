@@ -8,6 +8,18 @@ const column = {
     getAll: async () => {
         const response = await api.get('projects/1/columns');
         return response.data
+    },
+    add: async(column) => {
+        const response = await api.post('projects/1/columns', column);
+        return response.data;
+    },
+    delete: async(columnId) => {
+        const response = await api.delete(`projects/1/columns/${columnId}`);
+        return response.data
+    },
+    update: async(columnId, column) => {
+        const response = await api.put(`projects/1/columns/${columnId}`, column)
+        return response.data
     }
 }
 
