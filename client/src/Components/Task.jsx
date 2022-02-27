@@ -20,13 +20,15 @@ export const Task = ({task, handleDelete, updateTask, removeTaskAfterDrag}) => {
     
     const [updatedTask, setUpdatedTask] = useState(task);
     
-    const [{isDragging}, drag] = useDrag(() => ({
+    const [{monitor}, drag] = useDrag(() => ({
         type: "task",
         item: {id: task.id, columnId: task.columnId, title: task.title},
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
+            monitor: monitor
         }),
-        end: (item) => removeTaskAfterDrag(item.id, item.columnId)
+        end: (item) => {
+            if(monitor.getDropResult()) removeTaskAfterDrag(item.id, item.columnId)
+        }
     }))
     
     //changes the taskClicked state to true if a task is clicked 

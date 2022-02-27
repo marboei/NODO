@@ -12,7 +12,7 @@ import agent from "../Data/agent";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDrop } from "react-dnd";
 
-export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) => {
+export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) => {
     
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
@@ -33,7 +33,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
     //fetches tasks from db according to it's column and stores them in tasks state
     useEffect( async () => {
 
-        setTasks(await agent.task.getAll(column.id))
+        setTasks(await agent.task.getAll(projectId, column.id))
         setDropped(false)
 
 
@@ -41,8 +41,8 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
 
     const addTaskToColumn = async (id, columnId, title) => {
         
-        const addedTask = await agent.task.update(columnId, id, {title: title, columnId: column.id})
-        setTasks(await agent.task.getAll(column.id))
+        const addedTask = await agent.task.update(projectId, columnId, id, {title: title, columnId: column.id})
+        setTasks(await agent.task.getAll(projectId, column.id))
         setDropped(true)
     }
     
@@ -51,14 +51,14 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
     const handleDelete = async (id) => {
         let newTasks = tasks.filter((task) => task.id !== id)
         setTasks(newTasks)
-        await agent.task.delete(column.id, id)
+        await agent.task.delete(projectId, column.id, id)
     }
     
     //creates a new task after user submits the creation form
     const handleNewTaskSubmit = async (e) => {
         e.preventDefault();
 
-        const addedTask = await agent.task.add(column.id, {title: newTask})
+        const addedTask = await agent.task.add(projectId, column.id, {title: newTask})
         setTasks([...tasks, addedTask])
         
         e.target.value = ''
@@ -72,7 +72,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
             if (task.id === updatedTask.id) task.title = updatedTask.title
         })
         setTasks(updatedTasks)
-        await agent.task.update(column.id, id, updatedTask)
+        await agent.task.update(projectId, column.id, id, updatedTask)
     }
 
     //changes the taskClicked state to true if a task is clicked 
@@ -94,7 +94,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
     
     const removeTaskAfterDrag = async (id, columnId) => {
         if (columnId === column.id) {
-            let tasksAfterRemoved = await agent.task.getAll(column.id)
+            let tasksAfterRemoved = await agent.task.getAll(projectId, column.id)
             
             setTasks(tasksAfterRemoved.filter(t => t.id !== id))
         }
@@ -135,7 +135,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , handleDrop}) 
                     
                     {/*renders all tasks*/}
                     {tasks.map(task => (
-                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag} />
+                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag}/>
                     ))}
                     {/*renders new task form*/}
                     <form noValidate autoComplete="off" onSubmit={handleNewTaskSubmit}>
