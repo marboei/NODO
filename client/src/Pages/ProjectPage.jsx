@@ -1,26 +1,25 @@
 
 import * as React from 'react';
 import {Column} from "../Components/Column";
-import {Fab, Grid} from "@mui/material";
+import {Fab, Grid, Link} from "@mui/material";
 import {useEffect, useState} from "react";
 import agent from "../Data/agent";
 import AddIcon from '@mui/icons-material/Add';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend"
+import {useParams, useNavigate} from "react-router-dom";
 
 
 export const ProjectPage = () => {
+    const {projectId} = useParams()
     const [columns, setColumns] = useState([]);
-    
-    //temporary solution
-    const projectId = 1
-    
-    
-   
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchColumns(){
-            setColumns(await agent.column.getAll(1))
+            setColumns(await agent.column.getAll(projectId))
+            
         }
         fetchColumns();
     },[])
@@ -46,11 +45,17 @@ export const ProjectPage = () => {
         setColumns([...columns, newColumn])
     }
     
-    
-    
-    
     return (
         <div>
+            <Link
+                component="button"
+                variant="body2"
+                onClick={() => {
+                    navigate("/projects")
+                }}
+            >
+                Projects
+            </Link>
             <DndProvider backend={HTML5Backend}>
                 {/*renders all columns*/}
                 <Grid container>

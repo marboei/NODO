@@ -4,8 +4,31 @@ const api = axios.create({
     baseURL:'http://localhost:5001/api/'
 })
 
+const project = {
+    getAll: async() => {
+        const response = await api.get('projects')
+        return response.data
+    },
+    getById: async(projectId) => {
+        const response = await api.get(`projects/${projectId}`)
+        return response.data
+    },
+    add: async(project) => {
+        const response = await api.post('projects', project)
+        return response.data
+    },
+    update: async(projectId, project) => {
+        const response = await api.put(`projects/${projectId}`, project)
+        return response.data
+    },
+    delete: async(projectId) => {
+        const response = await api.delete(`projects/${projectId}`)
+        return response.data
+    },
+}
+
 const column = {
-    getAll: async(projectId, ) => {
+    getAll: async(projectId) => {
         const response = await api.get(`projects/${projectId}/columns`);
         return response.data
     },
@@ -49,6 +72,7 @@ const task = {
 
 
 const agent = {
+    project,
     column,
     task
 }

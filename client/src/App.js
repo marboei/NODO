@@ -1,9 +1,9 @@
 import './App.css';
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import {Column} from "./Components/Column";
 import {createTheme, ThemeProvider} from "@mui/material";
 import {ProjectPage} from "./Pages/ProjectPage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {ProjectsPage} from "./Pages/ProjectsPage";
+import {HomePage} from "./Pages/HomePage";
 
 
 function App() {
@@ -17,12 +17,19 @@ function App() {
         }
     });
   return (
-      <ThemeProvider theme={theme}>
-        <div className="App">
-            <h1>NoDo</h1>
-            <ProjectPage/>
-        </div>
-      </ThemeProvider>
+      
+          <ThemeProvider theme={theme}>
+              <BrowserRouter>
+                  <Routes>
+                      <Route path="/" element={<HomePage/>}/>
+                      <Route path="/projects" element={<ProjectsPage/>}/>
+                      <Route path="/projects/:projectId" element={<ProjectPage/>}/>
+                  </Routes>
+                      
+              </BrowserRouter>
+          </ThemeProvider>
+      
+      
   );
 }
 
