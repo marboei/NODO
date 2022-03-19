@@ -10,5 +10,5 @@ public class Column {
     public int ProjectId { get; set; }
     
 
-    public List<Card>? Cards { get; set; }
+    public virtual List<Card>? Cards { get; set; }
 }

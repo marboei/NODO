@@ -6,7 +6,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/API/API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/CardsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CardsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Column.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Column.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Project.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
@@ -15,6 +27,8 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
@@ -28,10 +42,14 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Column.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Column.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Data/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Data/agent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/HomePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectsPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +158,19 @@
       <workItem from="1646090664265" duration="1667000" />
       <workItem from="1646111461369" duration="1361000" />
       <workItem from="1646169398420" duration="18000" />
-      <workItem from="1646338237210" duration="1496000" />
+      <workItem from="1646338237210" duration="10017000" />
+      <workItem from="1646434471842" duration="5288000" />
+      <workItem from="1646658107959" duration="10620000" />
+      <workItem from="1646678411908" duration="643000" />
+      <workItem from="1646783778140" duration="4974000" />
+      <workItem from="1646984262166" duration="9441000" />
+      <workItem from="1647093532188" duration="4575000" />
+      <workItem from="1647106758065" duration="1978000" />
+      <workItem from="1647185908001" duration="4179000" />
+      <workItem from="1647344397038" duration="13915000" />
+      <workItem from="1647606786460" duration="1045000" />
+      <workItem from="1647613820912" duration="2996000" />
+      <workItem from="1647688143952" duration="511000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1645400799268</created>
@@ -205,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645994746589</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="&gt;Added home page&#10;&gt;Added projects page">
+      <created>1646343386073</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646343386074</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +273,8 @@
     <MESSAGE value="&gt;Added drag and drop functionality for tasks" />
     <MESSAGE value="&gt;Fixed a bug that executed the end drag method even if the task didn't have a target column" />
     <MESSAGE value="&gt;Added node_modules to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added node_modules to gitignore" />
+    <MESSAGE value="&gt;Added home page&#10;&gt;Added projects page" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added home page&#10;&gt;Added projects page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

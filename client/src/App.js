@@ -4,6 +4,9 @@ import {ProjectPage} from "./Pages/ProjectPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {ProjectsPage} from "./Pages/ProjectsPage";
 import {HomePage} from "./Pages/HomePage";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import Toolbar from "./Components/Toolbar";
 
 
 function App() {
@@ -14,22 +17,28 @@ function App() {
             background: {
                 default: '#eaeaea'
             }
-        }
+        },
+        typography: {
+            fontFamily: [
+                'Lato',
+                'cursive',
+            ].join(','),
+        },
     });
   return (
       
           <ThemeProvider theme={theme}>
               <BrowserRouter>
+                  <Toolbar/>
                   <Routes>
                       <Route path="/" element={<HomePage/>}/>
                       <Route path="/projects" element={<ProjectsPage/>}/>
                       <Route path="/projects/:projectId" element={<ProjectPage/>}/>
+                      <Route path="/login" element={<LoginPage/>}/>
+                      <Route path="/register" element={<RegisterPage/>}/>
                   </Routes>
-                      
               </BrowserRouter>
           </ThemeProvider>
-      
-      
   );
 }
 

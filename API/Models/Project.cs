@@ -1,4 +1,6 @@
 
+using System.Text.Json.Serialization;
+
 namespace API.Models; 
 
 public class Project {
@@ -9,5 +11,7 @@ public class Project {
     public string Title { get; set; }
     
     //Navigation Property
-    public List<Column>? Columns { get; set; }
+    public virtual List<Column>? Columns { get; set; }
+    [JsonIgnore]
+    public virtual List<User>? Users { get; set; }
 }

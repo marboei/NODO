@@ -1,24 +1,33 @@
+using System.Linq;
 using API.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers; 
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]  //  api/projects
 public class ProjectsController : ControllerBase {
     //for now we're going to access db from controllers, later on we'll implement it in Services
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<User> _userManager;
 
-    public ProjectsController(ApplicationDbContext context) {
+    public ProjectsController(ApplicationDbContext context, UserManager<User> userManager) {
         _context = context;
+        _userManager = userManager;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetAllAsync() {
-        var projects = await _context.Projects.ToListAsync();
-
-        return Ok(projects);
+    [HttpGet("user/{userId}")]
+    public async Task<IActionResult> GetAllAsync(string userId) {
+        var projects = await _context.Users
+            .Include(u => u.Projects)
+            .Where(u=>u.Id == userId).Select(p => p.Projects)
+            .ToListAsync();
+        
+        return Ok(projects[0]);
     }
     
     [HttpGet("{id}")]
@@ -31,9 +40,10 @@ public class ProjectsController : ControllerBase {
         return Ok(projects);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create([FromBody]Project project) {
-        await _context.Projects.AddAsync(project);
+    [HttpPost("user/{userId}")]
+    public async Task<IActionResult> Create([FromBody]Project project, [FromRoute]string userId) {
+        var user = await _userManager.FindByIdAsync(userId);
+        await _context.Projects.AddAsync(new Project {Title = project.Title, Users = new List<User>{user}});
         _context.SaveChanges();
         return Ok(project);
     }

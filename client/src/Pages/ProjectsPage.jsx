@@ -6,6 +6,7 @@ import {Card, CardContent, CardMedia, Fab, Grid, IconButton, Link, Typography} f
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
 
 export const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
@@ -14,6 +15,7 @@ export const ProjectsPage = () => {
     useEffect(() => {
         async function fetchProjects(){
             setProjects(await agent.project.getAll())
+            console.log(projects)
         }
         fetchProjects();
     }, [])
@@ -31,10 +33,11 @@ export const ProjectsPage = () => {
     
     return (
         <>
-        <Typography variant="h3" align="center" marginBottom='50px'>Projects Page</Typography>
-        <Grid container spacing={3} marginLeft='50px'>
-    {projects.map(project => (
-        <Grid item xs={4}>
+            <Typography variant="h3" align="center"  margin='50px' marginBottom='20px' letterSpacing={2}>Projects</Typography>
+            <span className="jss3"></span>
+            <Grid container spacing={3} margin='30px'>
+                {projects.map(project => (
+        <Grid item xs={4} key={project.id}>
         <Card
             className='interactiveCard'
             sx={{ maxWidth: 345 }}
@@ -56,10 +59,8 @@ export const ProjectsPage = () => {
         </Card>
         </Grid>    
     ))}
-            <Grid item xs={3} alignSelf='center'>
-                <Fab color="secondary" aria-label="add" sx={{verticalAlign: 'middle'}} onClick={handleAddProject}>
-                    <AddIcon />
-                </Fab>
+            <Grid item xs={3} >
+                    <Button color="secondary" size="small" onClick={handleAddProject} variant="outlined">Add Project</Button>
             </Grid>
         </Grid>
         </>

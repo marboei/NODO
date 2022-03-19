@@ -1,10 +1,11 @@
 using API.Data;
 using API.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers; 
-
+[Authorize]
 [ApiController]
 public class ColumnsController : ControllerBase {
     private readonly ApplicationDbContext _context;

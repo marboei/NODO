@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .App-logo {
@@ -44,4 +45,17 @@
 
 .interactiveCard:active {
   border: 2px solid black;
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+
+.jss3 {
+  width: 55px;
+  height: 4px;
+  margin: 8px auto 0;
+  display: block;
+  background-color: #9c27b0;
 }

@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend"
 import {useParams, useNavigate} from "react-router-dom";
+import Button from "@mui/material/Button";
 
 
 export const ProjectPage = () => {
@@ -47,27 +48,16 @@ export const ProjectPage = () => {
     
     return (
         <div>
-            <Link
-                component="button"
-                variant="body2"
-                onClick={() => {
-                    navigate("/projects")
-                }}
-            >
-                Projects
-            </Link>
             <DndProvider backend={HTML5Backend}>
                 {/*renders all columns*/}
                 <Grid container>
                     {columns.map(column =>  (
-                        <Grid item xs={3} key={column.id}>
+                        <Grid item xs={4} key={column.id}>
                             <Column column={column} handleDeleteColumn={handleDeleteColumn} updateColumn={updateColumn} projectId={projectId}/>
                         </Grid>
                     ))}
-                    <Grid item xs={3} alignSelf='center'>
-                        <Fab color="secondary" aria-label="add" sx={{verticalAlign: 'middle'}} onClick={handleAddColumn}>
-                            <AddIcon />
-                        </Fab>
+                    <Grid item xs={3} marginTop='32px'>
+                        <Button color="secondary" size="small" onClick={handleAddColumn} variant="outlined">Add Column</Button>
                     </Grid>
                 </Grid>
             </DndProvider>

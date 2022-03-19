@@ -29,7 +29,6 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     }))
     
     
-    
     //fetches tasks from db according to it's column and stores them in tasks state
     useEffect( async () => {
 
@@ -104,15 +103,15 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     return (
         <div >
             {/*renders tasks inside column*/}
-            <Card sx={{ maxWidth: 400, margin: 2, bgcolor: '#a8a69e' }}>
+            <Card sx={{ maxWidth: 400, margin: 4, bgcolor: '#b8b0b9' }}>
                 <CardContent ref={drop}>
                     {
                         columnClicked ? (
                             <ClickAwayListener onClickAway={handleClickAway}>
-                                <form noValidate autoComplete="off" onSubmit={handleColumnUpdateSubmit}>
+                                <form noValidate autoComplete="off" onSubmit={handleColumnUpdateSubmit} >
                                     <TextField
                                         onChange={(e) => setUpdatedColumn({id: column.id, title: e.target.value})}
-                                        value={updatedColumn.title}  id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>
+                                        value={updatedColumn.title}  id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}} />
                                 </form>
                             </ClickAwayListener>
 
@@ -135,14 +134,13 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
                     
                     {/*renders all tasks*/}
                     {tasks.map(task => (
-                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag}/>
+                            <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag} />
                     ))}
                     {/*renders new task form*/}
                     <form noValidate autoComplete="off" onSubmit={handleNewTaskSubmit}>
                         <TextField onChange={(e) => setNewTask(e.target.value)} 
-                                    value={newTask} id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>
+                                    value={newTask} id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white', marginLeft: '15px', marginRight: '1rem'}}/>
                     </form>
-                   
                 </CardContent>
             </Card>
         </div>

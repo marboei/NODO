@@ -1,10 +1,12 @@
 using API.Data;
 using API.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers; 
 
+[Authorize]
 public class CardsController : ControllerBase{
     
     private readonly ApplicationDbContext _context;
