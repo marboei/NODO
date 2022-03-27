@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
     lineHeight: '60px',
 }));
 
-export const Task = ({task, handleDelete, updateTask, removeTaskAfterDrag}) => {
+export const Task = ({task, handleDelete, handleUpdateTask, removeTaskAfterDrag}) => {
     
     const [taskClicked, setTaskClicked] = useState(false);
     
@@ -43,7 +43,7 @@ export const Task = ({task, handleDelete, updateTask, removeTaskAfterDrag}) => {
     const handleTaskUpdateSubmit = async (e) => {
             e.preventDefault();
             //called from parent component(Column)
-            updateTask(updatedTask, task.id)
+            handleUpdateTask(updatedTask, task.id)
             setTaskClicked(false);
     }
     

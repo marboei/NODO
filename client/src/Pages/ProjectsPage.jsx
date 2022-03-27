@@ -7,28 +7,39 @@ import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {addProject, deleteProject, setProjects} from "../store/Slices/projectsSlice";
+import {setCurrentProject} from "../store/Slices/columnsSlice";
 
 export const ProjectsPage = () => {
-    const [projects, setProjects] = useState([]);
+    const dispatch = useDispatch()
+    const {projects} = useSelector(state => state.projects)
+    const {currentProject} = useSelector(state => state.columns)
     const navigate = useNavigate()
+
+    const handleAddProject = async () => {
+        const newProject = await agent.project.add({title: "New Project"})
+        console.log(newProject)
+        //here i'll dispatch addProject action and add newProject
+        dispatch(addProject(newProject))
+        let projectsAsync = await agent.project.getAll()
+        dispatch(setProjects(projectsAsync))
+    }
     
     useEffect(() => {
         async function fetchProjects(){
-            setProjects(await agent.project.getAll())
-            console.log(projects)
+            dispatch(setCurrentProject(null))
+            let projectsAsync = await agent.project.getAll()
+            dispatch(setProjects(projectsAsync))
         }
         fetchProjects();
     }, [])
     
-    const handleAddProject = async () => {
-        const newProject = await agent.project.add({title: "New Project"})
-        setProjects([...projects, newProject])
-    }
+    
 
     const handleDeleteProject = async (id) => {
-        let newTasks = projects.filter((project) => project.id !== id)
-        setProjects(newTasks)
         await agent.project.delete(id)
+        dispatch(deleteProject(id))
     }
     
     return (

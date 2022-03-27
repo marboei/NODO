@@ -12,6 +12,6 @@ public class Project {
     
     //Navigation Property
     public virtual List<Column>? Columns { get; set; }
-    [JsonIgnore]
+    
     public virtual List<User>? Users { get; set; }
 }

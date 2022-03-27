@@ -29,6 +29,17 @@ public class ProjectsController : ControllerBase {
         
         return Ok(projects[0]);
     }
+
+    [HttpGet("{id}/users")]
+    public async Task<IActionResult> GetProjectUsersAsync(int id) {
+        var users = await _context.Projects
+            .Include(p => p.Users)
+            .Where(p => p.Id == id)
+            .Select(p => p.Users)
+            .ToListAsync();
+
+        return Ok(users[0]);
+    }
     
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdAsync(int id) {
@@ -56,6 +67,24 @@ public class ProjectsController : ControllerBase {
         }
 
         project.Title = updatedProject.Title;
+        _context.SaveChanges();
+
+        return Ok(project);
+    }
+    
+    [HttpPut("{id}/user/{userId}")]
+    public async Task<IActionResult> Update(int id, string userId) {
+        var project = await _context.Projects.SingleOrDefaultAsync(p => p.Id == id);
+        if (project == null) {
+            return NotFound($"No projects found with Id: {id}");
+        }
+        
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null) {
+            return NotFound($"No users found with Id: {userId}");
+        }
+        project.Users?.Add(user);
+        
         _context.SaveChanges();
 
         return Ok(project);

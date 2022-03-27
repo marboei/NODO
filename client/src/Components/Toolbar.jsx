@@ -12,10 +12,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Button from "@mui/material/Button";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Avatar from "@mui/material/Avatar";
+import {useDispatch, useSelector} from "react-redux";
+import {setUser} from "../store/Slices/userSlice";
+import {AvatarGroup, Divider} from "@mui/material";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,8 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function stringToColor(string) {
     let hash = 0;
     let i;
-
-    /* eslint-disable no-bitwise */
+    
     for (i = 0; i < string.length; i += 1) {
         hash = string.charCodeAt(i) + ((hash << 5) - hash);
     }
@@ -72,15 +74,17 @@ function stringToColor(string) {
         const value = (hash >> (i * 8)) & 0xff;
         color += `00${value.toString(16)}`.substring(-2);
     }
-    /* eslint-enable no-bitwise */
 
     return color;
 }
 
-function stringAvatar(name) {
+export function stringAvatar(name) {
     return {
         sx: {
             bgcolor: stringToColor(name),
+            width: 41, 
+            height: 41,
+            alignItems: 'center'
         },
         children: `${name.toString().split(' ')[0][0]}${name.toString().split(' ')[1][0]}`,
     };
@@ -88,21 +92,24 @@ function stringAvatar(name) {
 
 
 export default function PrimarySearchAppBar() {
+    const {user} = useSelector(state => state.user)
+    const {members} = useSelector(state => state.columns)
+    const {currentProject} = useSelector(state => state.columns)
+    const {projectId} = useParams()
+    const dispatch = useDispatch()
     let navigate = useNavigate()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    const [isSignedIn, setIsSignedIn] = useState(localStorage.getItem('user') !== null)
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-    let fullName = user ? `${user.firstName} ${user.lastName}}` : null
+    
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    
+    useEffect(() => {
+        console.log(user ? user : 'bro')
+    }, [user])
 
     
-    
-    const handleSignIn = () => {
-        setIsSignedIn(true);
-    }
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -121,7 +128,7 @@ export default function PrimarySearchAppBar() {
         localStorage.removeItem('user')
         setAnchorEl(null);
         handleMobileMenuClose();
-        setIsSignedIn(false);
+        dispatch(setUser(false))
         navigate('/login')
 
     };
@@ -205,7 +212,7 @@ export default function PrimarySearchAppBar() {
                         />
                     </Search>
                     {
-                        isSignedIn ? (
+                        user ? (
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 <Button
                                     onClick={() => navigate('/projects')}
@@ -217,11 +224,28 @@ export default function PrimarySearchAppBar() {
                         ) : ''
                     }
                     
-
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
                         {
-                            isSignedIn ? (
+                            currentProject !== null ? (
+                                <>
+                                    <AvatarGroup max={4}>
+                                        {
+                                            members.filter(member => member.id !== user.id)
+                                            .map(member => (
+                                                <Avatar {...stringAvatar(`${member.firstName} ${member.lastName}`)}
+                                                        key={member.id} sx={{margin: '10px'}}/>
+                                            ))
+                                        }
+                                    </AvatarGroup>
+                                    <Divider orientation="vertical" flexItem>
+                                        MEMBERS
+                                    </Divider>
+                                </>
+                            ) : ''
+                        }
+                        { user ? (
                                 <IconButton
                                     size="large"
                                     edge="end"
@@ -231,8 +255,9 @@ export default function PrimarySearchAppBar() {
                                     onClick={handleProfileMenuOpen}
                                     color="inherit"
                                 >
-                                    <AccountCircle />
+                                    <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)}/>
                                 </IconButton>
+                                    
                             ) : (
                                 <Button
                                     onClick={() => navigate('/login')}
@@ -253,13 +278,9 @@ export default function PrimarySearchAppBar() {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            {
-                            fullName ? (
-                                <Avatar {...stringAvatar(fullName)} />
-                            ) : (
+                           
                                 <AccountCircle/>
-                                )
-                            }
+                            
                         </IconButton>
                         
                     </Box>

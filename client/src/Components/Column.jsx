@@ -20,7 +20,6 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     const [updatedColumn, setUpdatedColumn] = useState(column);
     const [dropped, setDropped] = useState(false);
     
-    
     const [{isOver, monitor}, drop] = useDrop(() => ({
         accept: "task",
         drop: async (item) => {

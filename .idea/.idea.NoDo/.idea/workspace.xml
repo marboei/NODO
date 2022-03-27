@@ -6,19 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/store.db-shm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API/store.db-wal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/Slices/columnsSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/Slices/projectsSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/Slices/userSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/store/configureStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/API/API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Controllers/CardsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CardsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Models/Column.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Column.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Models/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Project.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
@@ -29,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/17.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
@@ -42,19 +40,29 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Column.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Column.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Task.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Toolbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Toolbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Data/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Data/agent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,7 +178,15 @@
       <workItem from="1647344397038" duration="13915000" />
       <workItem from="1647606786460" duration="1045000" />
       <workItem from="1647613820912" duration="2996000" />
-      <workItem from="1647688143952" duration="511000" />
+      <workItem from="1647688143952" duration="3082000" />
+      <workItem from="1647880177234" duration="6116000" />
+      <workItem from="1647969105890" duration="13673000" />
+      <workItem from="1648055578538" duration="2475000" />
+      <workItem from="1648251819206" duration="4438000" />
+      <workItem from="1648272062195" duration="2979000" />
+      <workItem from="1648321993312" duration="623000" />
+      <workItem from="1648340207144" duration="4669000" />
+      <workItem from="1648423309996" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1645400799268</created>
@@ -242,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646343386074</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="&gt;Added Login and Register functionality&#10;&gt;Added a basic Toolbar">
+      <created>1647688914062</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647688914063</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +297,8 @@
     <MESSAGE value="&gt;Fixed a bug that executed the end drag method even if the task didn't have a target column" />
     <MESSAGE value="&gt;Added node_modules to gitignore" />
     <MESSAGE value="&gt;Added home page&#10;&gt;Added projects page" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added home page&#10;&gt;Added projects page" />
+    <MESSAGE value="&gt;Added Login and Register functionality&#10;&gt;Added a basic Toolbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added Login and Register functionality&#10;&gt;Added a basic Toolbar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.css-d7gmiq-MuiDivider-root {
+  height: 100%;
+  top: 0;
+  left: 50%;
+  border-top: 0;
+  border-left: thin solid rgb(255 255 255);
+  transform: translateX(0%);
+}
+
+

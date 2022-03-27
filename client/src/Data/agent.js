@@ -38,8 +38,13 @@ const project = {
         const user = JSON.parse(localStorage.getItem('user'));
         console.log(user);
         const response = await api.get(`projects/user/${user.id}`, config)
+        console.log(response.data)
         return response.data
         
+    },
+    getProjectUsers: async(projectId) => {
+        const response = await api.get(`projects/${projectId}/users`, config)
+        return response.data
     },
     getById: async(projectId) => {
         const response = await api.get(`projects/${projectId}`, config)

@@ -17,11 +17,15 @@ import agent from "../Data/agent";
 import {Alert, AlertTitle} from "@mui/material";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {setUser} from "../store/Slices/userSlice";
 
 
 const theme = createTheme();
 
 export default function LoginPage() {
+    const {isAuthenticated} = useSelector(state => state.user)
+    const dispatch = useDispatch()
     let navigate = useNavigate()
     const { handleSubmit, control } = useForm();
     const [isAuthorized, setIsAuthorized] = useState(true);
@@ -30,7 +34,7 @@ export default function LoginPage() {
         let result = '';
         try{
             result = await agent.account.register(data);
-            
+            dispatch(setUser(JSON.parse(localStorage.getItem('user')) || null))
             navigate('/projects');
         }
         catch{

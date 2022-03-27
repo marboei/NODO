@@ -2,11 +2,13 @@ import * as React from 'react';
 import {Link} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+import Button from "@mui/material/Button";
+
+
 export const HomePage = () => {
-    let navigate = useNavigate()
+    
     return (
         <div>
-            <h1>Home Page</h1>
         </div>
     );
 };
