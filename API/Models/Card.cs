@@ -8,4 +8,16 @@ public class Card {
 
     public int ColumnId { get; set; }
     
+    public virtual List<User>? AssignedTo { get; set; }
+    
+    public string? Description { get; set; }
+    
+    public string? Label { get; set; }
+    
+    public DateTime? DueDate { get; set; }
+    
+    public virtual List<Comment> Comments { get; set; }
+    
+    
+    
 }

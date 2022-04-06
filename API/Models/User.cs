@@ -8,4 +8,6 @@ public class User : IdentityUser {
     public string LastName { get; set; }
     [JsonIgnore]
     public virtual List<Project>? Projects { get; set; }
+    [JsonIgnore]
+    public virtual List<Card>? CardsAssigned { get; set; } 
 }

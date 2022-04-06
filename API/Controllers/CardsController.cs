@@ -1,6 +1,7 @@
 using API.Data;
 using API.DTO;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,11 @@ namespace API.Controllers;
 public class CardsController : ControllerBase{
     
     private readonly ApplicationDbContext _context;
-    
-    public CardsController(ApplicationDbContext context) {
+    private readonly UserManager<User> _userManager;
+
+    public CardsController(ApplicationDbContext context, UserManager<User> userManager) {
         _context = context;
+        _userManager = userManager;
     }
 
     [Route("api/projects/{projectId}/columns/{columnId}/cards")]
@@ -61,10 +64,17 @@ public class CardsController : ControllerBase{
         
         if(card == null) return NotFound($"No Cards found with Id: {id}");
         
-        card.Title = dto.Title;
-        if (dto.ColumnId != null) {
-            card.ColumnId = dto.ColumnId ?? card.ColumnId;
-        }
+        card.Title = dto.Title ?? card.Title;
+        card.Description = dto.Description ?? card.Description;
+        card.Label = dto.Label ?? card.Label;
+        card.DueDate = dto.DueDate ?? card.DueDate;
+        card.ColumnId = dto.ColumnId ?? card.ColumnId;
+
+        dto.AssignedTo?.ForEach(async userId => {
+            var userAsync = await _userManager.FindByIdAsync(userId);
+            card.AssignedTo?.Add(userAsync);
+        });
+
         _context.SaveChanges();
         
         return Ok(card);

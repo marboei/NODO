@@ -26,6 +26,15 @@ namespace API.Migrations
                     b.Property<int>("ColumnId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Label")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -35,7 +44,7 @@ namespace API.Migrations
 
                     b.HasIndex("ColumnId");
 
-                    b.ToTable("Cards", (string)null);
+                    b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("API.Models.Column", b =>
@@ -56,7 +65,36 @@ namespace API.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Columns", (string)null);
+                    b.ToTable("Columns");
+                });
+
+            modelBuilder.Entity("API.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CardId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Likes")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("API.Models.Project", b =>
@@ -72,7 +110,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>
@@ -147,6 +185,21 @@ namespace API.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("CardUser", b =>
+                {
+                    b.Property<string>("AssignedToId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CardsAssignedId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("AssignedToId", "CardsAssignedId");
+
+                    b.HasIndex("CardsAssignedId");
+
+                    b.ToTable("CardUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -175,15 +228,15 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a9ba5633-e796-4f0c-9803-55c9016364d0",
-                            ConcurrencyStamp = "8b86e531-818f-498b-a25a-bafbbba4922a",
+                            Id = "c5035153-64d7-43ef-b86b-e8c6b3302b05",
+                            ConcurrencyStamp = "6092c10b-1538-411f-9489-b66ee7e22fae",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "e74a8d2d-8551-482d-a62e-07d48a415294",
-                            ConcurrencyStamp = "2d34769b-a3dd-4b53-a103-25dc7ac5f46c",
+                            Id = "cf8d4cc8-0d18-4d16-88d8-234d004c47f5",
+                            ConcurrencyStamp = "4b5de7c0-a580-4861-80d7-1df54a5b4ecd",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -303,7 +356,7 @@ namespace API.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("ProjectUser", (string)null);
+                    b.ToTable("ProjectUser");
                 });
 
             modelBuilder.Entity("API.Models.Card", b =>
@@ -320,6 +373,36 @@ namespace API.Migrations
                     b.HasOne("API.Models.Project", null)
                         .WithMany("Columns")
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Models.Comment", b =>
+                {
+                    b.HasOne("API.Models.Card", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("CardId");
+
+                    b.HasOne("API.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CardUser", b =>
+                {
+                    b.HasOne("API.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("AssignedToId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Models.Card", null)
+                        .WithMany()
+                        .HasForeignKey("CardsAssignedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -388,6 +471,11 @@ namespace API.Migrations
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Models.Card", b =>
+                {
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("API.Models.Column", b =>

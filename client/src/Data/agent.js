@@ -108,12 +108,24 @@ const task = {
     }
 }
 
+const comment = {
+    getAll: async(projectId, columnId, cardId) => {
+        const response = await api.get(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments`, config);
+        return response.data
+    },
+    add: async(projectId, columnId, cardId, comment) => {
+        const response = await api.post(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments`, comment, config);
+        return response.data
+    },
+}
+
 
 const agent = {
     account,
     project,
     column,
-    task
+    task,
+    comment
 }
 
 export default agent;

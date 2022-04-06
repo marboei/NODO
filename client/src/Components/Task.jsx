@@ -1,24 +1,58 @@
 
 import * as React from 'react';
-import {ClickAwayListener, Grid, IconButton, Paper, styled, TextField} from "@mui/material";
+import {
+    Backdrop,
+    ClickAwayListener, Container, Divider, Fade,
+    Grid,
+    IconButton, Modal,
+    Paper,
+    Popover,
+    styled,
+    TextField,
+    Typography
+} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useDrag } from "react-dnd";
+import TitleIcon from '@mui/icons-material/Title';
+import SegmentRoundedIcon from '@mui/icons-material/SegmentRounded';
+import Box from "@mui/material/Box";
+import NotesIcon from '@mui/icons-material/Notes';
+import CommentIcon from '@mui/icons-material/Comment';
+import {Comment} from "./Comment";
+import {TaskDetails} from "./TaskDetails";
+import {useDispatch, useSelector} from "react-redux";
+import {setTask} from "../store/Slices/taskSlice";
+import {useParams} from "react-router-dom";
+import agent from "../Data/agent";
 
 //styling for task card
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     color: theme.palette.text.secondary,
-    textAlign: 'center',
-    height: 60,
-    lineHeight: '60px',
+    textAlign: 'left',
+    lineHeight: '30px',
+    margin: '0px',
+    
+    wordWrap: 'break-word',
+    cursor: 'pointer',
+   
+        "&:hover": {
+            border: '1px solid #545055'
+        }
 }));
+
 
 export const Task = ({task, handleDelete, handleUpdateTask, removeTaskAfterDrag}) => {
     
     const [taskClicked, setTaskClicked] = useState(false);
     
     const [updatedTask, setUpdatedTask] = useState(task);
+    
+    const {projectId} = useParams()
+    
+    const dispatch = useDispatch();
+    
     
     const [{monitor}, drag] = useDrag(() => ({
         type: "task",
@@ -32,11 +66,14 @@ export const Task = ({task, handleDelete, handleUpdateTask, removeTaskAfterDrag}
     }))
     
     //changes the taskClicked state to true if a task is clicked 
-    const handleTaskClick = () => {
+    const handleTaskClick = async () => {
+        dispatch(setTask(await agent.task.getById(projectId, task.columnId, task.id)))
+        console.log(task)
         setTaskClicked(true)
     };
     //changes taskClicked state to false if user clicks outside of card
     const handleClickAway = () => {
+        
         setTaskClicked(false);
     };
     //handles the updated task form when submitted
@@ -47,38 +84,29 @@ export const Task = ({task, handleDelete, handleUpdateTask, removeTaskAfterDrag}
             setTaskClicked(false);
     }
     
+    
+    
     return (
-        <div>
-            {
-                //if task is clicked renders a form to update task, otherwise it renders the card itself
-                taskClicked ? (
-                    <ClickAwayListener onClickAway={handleClickAway}>
-                        <form noValidate autoComplete="off" onSubmit={handleTaskUpdateSubmit}>
-                            <TextField
-                                onChange={(e) => setUpdatedTask({id: task.id, title: e.target.value})}
-                                value={updatedTask.title}  id="outlined-basic" label="New task" variant="outlined" sx={{bgcolor: 'white'}}/>
-                        </form>
-                    </ClickAwayListener>
-                    
-                ) : (
-                    <Item elevation={16} sx={{ margin: 2 }} onClick={handleTaskClick} ref={drag}>
-                        <Grid container>
-                            <Grid item xs={8}>
-                                <div>
-                                    {task.title}
-                                </div>
-                            </Grid>
 
-                            <Grid item xs={4}>
-                                <IconButton aria-label="delete" onClick={() => handleDelete(task.id)} >
-                                    <DeleteIcon fontSize="small"/>
-                                </IconButton>
-                            </Grid>
-                        </Grid>
-                    </Item>
-                )
-            
-            }
-        </div>
+            <Item elevation={10} sx={{ margin: 2 }} ref={drag}>
+                
+                <Grid container>
+                    <Grid item xs={8}  onClick={handleTaskClick} sx={{padding: '5px', fontSize: '17px', fontWeight: '400'}}>
+                        <div>
+                            {task.title}
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <IconButton aria-label="delete" onClick={() => handleDelete(task.id)} >
+                            <DeleteIcon fontSize="small"/>
+                        </IconButton>
+                    </Grid>
+                </Grid>
+
+                <TaskDetails handleClickAway={handleClickAway} taskClicked={taskClicked}/>
+            </Item>
+    
+                        
     );
 };

@@ -20,8 +20,8 @@ function App() {
         },
         typography: {
             fontFamily: [
-                'Lato',
-                'cursive',
+                'Fredoka',
+                'sans-serif',
             ].join(','),
         },
     });

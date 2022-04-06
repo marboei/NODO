@@ -19,6 +19,7 @@ import Avatar from "@mui/material/Avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../store/Slices/userSlice";
 import {AvatarGroup, Divider} from "@mui/material";
+import {stringAvatar} from "../Utils/stringAvatar";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,35 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-function stringToColor(string) {
-    let hash = 0;
-    let i;
-    
-    for (i = 0; i < string.length; i += 1) {
-        hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
 
-    let color = '#';
-
-    for (i = 0; i < 3; i += 1) {
-        const value = (hash >> (i * 8)) & 0xff;
-        color += `00${value.toString(16)}`.substring(-2);
-    }
-
-    return color;
-}
-
-export function stringAvatar(name) {
-    return {
-        sx: {
-            bgcolor: stringToColor(name),
-            width: 41, 
-            height: 41,
-            alignItems: 'center'
-        },
-        children: `${name.toString().split(' ')[0][0]}${name.toString().split(' ')[1][0]}`,
-    };
-}
 
 
 export default function PrimarySearchAppBar() {
@@ -235,7 +208,7 @@ export default function PrimarySearchAppBar() {
                                             members.filter(member => member.id !== user.id)
                                             .map(member => (
                                                 <Avatar {...stringAvatar(`${member.firstName} ${member.lastName}`)}
-                                                        key={member.id} sx={{margin: '10px'}}/>
+                                                        key={member.id} sx={{margin: '10px', bgcolor: `${member.firstName} ${member.lastName}`.toColor()}}/>
                                             ))
                                         }
                                     </AvatarGroup>
@@ -255,7 +228,7 @@ export default function PrimarySearchAppBar() {
                                     onClick={handleProfileMenuOpen}
                                     color="inherit"
                                 >
-                                    <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)}/>
+                                    <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)} sx={{bgcolor: `${user.firstName} ${user.lastName}`.toColor()}}/>
                                 </IconButton>
                                     
                             ) : (
