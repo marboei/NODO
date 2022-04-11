@@ -8,8 +8,8 @@ import {
     Fade,
     FormControl,
     Grid,
-    IconButton,
-    Modal,
+    IconButton, Link,
+    Modal, Popover,
     TextField,
     Typography
 } from "@mui/material";
@@ -27,6 +27,12 @@ import agent from "../Data/agent";
 import {setTask} from "../store/Slices/taskSlice";
 import Avatar from "@mui/material/Avatar";
 import {stringAvatar} from "../Utils/stringAvatar";
+import AddIcon from "@mui/icons-material/Add";
+import {Search} from "./Search";
+import Tooltip from '@mui/material/Tooltip';
+import RemoveIcon from "@mui/icons-material/Remove";
+import PopupState, {bindPopover, bindTrigger} from "material-ui-popup-state";
+
 
 const modalStyle = {
     position: 'absolute',
@@ -54,6 +60,7 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
     const [titleClicked, setTitleClicked] = useState(false)
     const [newTitle, setNewTitle] = useState('')
     const [newComment, setNewComment] = useState('')
+    const [assignedToClicked, setAssignedToClicked] = useState(false)
     const {projectId} = useParams()
     const {user} = useSelector(state => state.user)
     
@@ -88,6 +95,17 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
         dispatch(setTask(updatedTask))
         setNewComment('')
     }
+
+    const handleAssignToButton = async (user) => {
+        const updatedTask = await agent.task.update(projectId, task.columnId, task.id, {assignedTo: [user.id]})
+        dispatch(setTask(updatedTask))
+    }
+    
+    const handleCommentDelete = async(commentId) => {
+        const deletedComment = await agent.comment.delete(projectId, task.columnId, task.id, commentId)
+        let newTask = {...task, comments: task.comments.filter(c => c.id !== commentId)}
+        dispatch(setTask(newTask))
+    }
     
     
     
@@ -107,16 +125,24 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
             <Fade in={taskClicked}>
                 
                 <Box sx={modalStyle}>
+                    
+                    {/*close icon in the top left corner of the modal*/}
                     <Box textAlign='right'>
                         <IconButton color="secondary" aria-label="upload picture" component="span" onClick={handleClickAway}>
                             <CloseIcon />
                         </IconButton>
                     </Box>
+                    
+                    {/*content of the modal*/}
                     <Container fixed sx={{margin: '0px'}}>
+                        
+                        {/*title grid*/}
                         <Grid container spacing={2}>
+                            {/*title icon*/}
                             <Grid item xs={0.7}>
                                 <TitleIcon fontSize="medium"  sx={{bgcolor: '#9c27b0', border: '1px solid #9c27b0', color:'#ffffff', marginLeft:'0px', borderRadius: '5px'}}/>
                             </Grid>
+                            {/*title text - text area*/}
                             {
                                 titleClicked ? (
                                     <form noValidate autoComplete="off" onSubmit={handleTitleSubmit}>
@@ -132,9 +158,11 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
 
                         </Grid>
                         <Divider sx={{paddingTop: '44px'}}/>
+                        
+                        
                         <Grid container spacing={2}>
+                            {/*desc & comments grid*/}
                             <Grid item xs={8}>
-                                
                                 <Grid container spacing={2} marginTop={4}>
                                     <Grid item xs={0.7}>
                                         <NotesIcon fontSize="medium"  sx={{bgcolor: '#9c27b0', border: '1px solid #9c27b0', color:'#ffffff', borderRadius: '5px'}}/>
@@ -159,7 +187,7 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
                                                     <Grid item xs={11}>
                                                         <form noValidate autoComplete="off" onSubmit={handleDescriptionSubmit} style={{margin: '0px', padding:'0px'}}>
                                                             <TextField fullWidth onChange={(e) => setNewDescription(e.target.value)}
-                                                                       value={newDescription} id="outlined-basic" label="Description" variant="outlined" multiline rows={5}  color='secondary' sx={{bgcolor: 'white', marginRight: '1rem', marginBottom: '5px'}}/>
+                                                                       value={newDescription || ''} id="outlined-basic" label="Description" variant="outlined" multiline rows={5}  color='secondary' sx={{bgcolor: 'white', marginRight: '1rem', marginBottom: '5px'}}/>
                                                             <Button type="submit" color="secondary" size="small" variant="outlined" onSubmit={(() => setAddDescriptionClicked(true))}>Save</Button>
                                                         </form>
                                                     </Grid>
@@ -200,28 +228,90 @@ export const TaskDetails = ({taskClicked, handleClickAway}) => {
                                     {
                                         task.comments ? 
                                         task.comments.map(comment => (
-                                            <Comment name={`${comment.user.firstName} ${comment.user.lastName}`} username={comment.user.userName} text={comment.text}/>
+                                            <>
+                                                <Comment name={`${comment.user.firstName} ${comment.user.lastName}`} username={comment.user.userName} text={comment.text} key={comment.id}/>
+                                                {
+                                                    comment.user.id === user.id ? (
+                                                        <Link href="#" variant="body2" textAlign="right" onClick={() => handleCommentDelete(comment.id)}>
+                                                            {"Delete"}
+                                                        </Link>
+                                                    ) : (
+                                                        <></>
+                                                    )
+                                                }
+                                            </>
+                                            
                                         )) : ('')
                                     }
                                 </Grid>
                             </Grid>
+                            
+                            {/*labels & assigned members grid*/}
                             <Grid item xs={4} marginTop={4}>
-                                <Typography variant='subtitle1'>Labels:</Typography>  
-                                <Chip label="Clicka" variant="outlined" />
-                                <Chip label="Clickabl" variant="outlined" />
-                                <Chip label="Clickable" variant="outlined" />
-                                <Chip label="Clickablee" variant="outlined" />
+                                <Typography variant='subtitle1'>Labels:</Typography>
+                                <PopupState variant="popover" popupId="demo-popup-popover">
+                                    {(popupState) => (
+                                        <div>
+                                            <Chip label="+" {...bindTrigger(popupState)}/>
+                                            <Popover
+                                                {...bindPopover(popupState)}
+                                                anchorOrigin={{
+                                                    vertical: 'bottom',
+                                                    horizontal: 'center',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'center',
+                                                }}
+                                            >
+                                                <h6>bro</h6>
+                                            </Popover>
+                                        </div>
+                                    )}
+                                </PopupState>
+                                
                                 <Typography variant='subtitle1' marginTop={12}>Assigned To:</Typography>
                                 {
                                     task.assignedTo ? (
-                                        <AvatarGroup sx={{alignItems:'center'}}>
+                                        <>
+                                        
+                                            <Avatar>
+                                                {
+                                                    !assignedToClicked ? (
+                                                        <Tooltip title="Add member" arrow>
+                                                            <IconButton aria-label="add" onClick={() => setAssignedToClicked(true)}>
+                                                                <AddIcon fontSize="small"/>
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    ) : (
+                                                            <IconButton aria-label="add" onClick={() => setAssignedToClicked(false)} sx={{bgcolor: '#cc0000',padding: '10px', '&:hover':{bgcolor: '#951717'}}}>
+                                                                <RemoveIcon fontSize="small" />
+                                                            </IconButton>
+                                                    )
+                                                }
+                                                
+                                            </Avatar>
                                             {
                                                 task.assignedTo.map(member => (
-                                                    <Avatar {...stringAvatar(`${member.firstName} ${member.lastName}`)}
-                                                            key={member.id} sx={{bgcolor: `${member.firstName} ${member.lastName}`.toColor()}}/>
+                                                    <Tooltip title={`${member.firstName} ${member.lastName}`} arrow>
+                                                        <Chip
+                                                            avatar={<Avatar {...stringAvatar(`${member.firstName} ${member.lastName}`)}
+                                                                            key={member.id} sx={{bgcolor: `${member.firstName} ${member.lastName}`.toColor()}}/>}
+                                                            label={`${member.firstName} ${member.lastName}`}
+                                                            variant="outlined"
+                                                            sx={{marginRight: '3px'}}
+                                                        />
+                                                    </Tooltip>
                                                 ))
                                             }
-                                        </AvatarGroup>
+                                        </>
+                                    ) : (
+                                        <></>
+                                    )
+                                }
+                                {
+                                    assignedToClicked ? (
+                                        <Search handleSubmit={handleAssignToButton}/>
                                     ) : (
                                         <></>
                                     )

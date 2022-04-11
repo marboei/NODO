@@ -12,7 +12,7 @@ export const Comment = ({username, name, text}) => {
         color: theme.palette.text.secondary,
         textAlign: 'left',
         lineHeight: '30px',
-        paddingLeft: '10px',
+        padding: '7px',
         wordWrap: 'break-word',
     }));
     
@@ -24,7 +24,7 @@ export const Comment = ({username, name, text}) => {
                 </Grid>
                 <Grid item xs={10.5}>
                     <Typography variant='subtitle1'>{username}</Typography>
-                    <Item elevaion={16} paddingLeft={2}>{text}</Item>
+                    <Item elevaion={16} padding={2}>{text}</Item>
                 </Grid>
             </Grid>
     );

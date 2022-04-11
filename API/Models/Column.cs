@@ -8,7 +8,8 @@ public class Column {
     public string Title { get; set; }
 
     public int ProjectId { get; set; }
-    
 
+    public int? Order { get; set; } = 0;
+    
     public virtual List<Card>? Cards { get; set; }
 }

@@ -3,7 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     columns: [],
     members: [],
-    currentProject: null
+    currentProject: null,
+    currentDraggedColumn: null
 }
 export const columnsSlice = createSlice({
     name: 'columns',
@@ -11,6 +12,9 @@ export const columnsSlice = createSlice({
     reducers: {
         setCurrentProject: (state, action) => {
             state.currentProject = action.payload
+        },
+        setCurrentDraggedColumn: (state, action) => {
+            state.currentDraggedColumn = action.payload
         },
         setMembers: (state,action) => {
             state.members = action.payload
@@ -22,7 +26,7 @@ export const columnsSlice = createSlice({
             state.columns.push(action.payload)
         },
         deleteColumn: (state, action) => {
-            state.columns.pop(state.columns.filter((column) => column.id === action.payload))
+            state.columns = state.columns.filter((column) => column.id !== action.payload)
         },
         updateColumn: (state, action) => {
             state.columns.forEach((task) => {
@@ -32,4 +36,4 @@ export const columnsSlice = createSlice({
     }
 })
 
-export const { addColumn, deleteColumn, setColumns, updateColumn, setMembers, setCurrentProject } = columnsSlice.actions;
+export const { addColumn, deleteColumn, setColumns, updateColumn, setMembers, setCurrentProject, setCurrentDraggedColumn } = columnsSlice.actions;

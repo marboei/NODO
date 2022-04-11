@@ -49,4 +49,13 @@ public class CommentsController : ControllerBase {
             return NotFound();
         }
     }
+    
+    [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}/comments/{id}")]
+    [HttpDelete]
+    public async Task<IActionResult> DeleteComment(int projectId, int columnId, int cardId, int id) {
+        var comment = await _context.Comments.SingleOrDefaultAsync(c => c.Id == id);
+        _context.Comments.Remove(comment);
+        _context.SaveChanges();
+        return Ok(comment);
+    }
 }

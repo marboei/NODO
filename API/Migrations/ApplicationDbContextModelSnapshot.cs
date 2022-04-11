@@ -53,6 +53,9 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("Order")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ProjectId")
                         .HasColumnType("INTEGER");
 
@@ -74,7 +77,7 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CardId")
+                    b.Property<int>("CardId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Likes")
@@ -94,7 +97,7 @@ namespace API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("API.Models.Project", b =>
@@ -228,15 +231,15 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c5035153-64d7-43ef-b86b-e8c6b3302b05",
-                            ConcurrencyStamp = "6092c10b-1538-411f-9489-b66ee7e22fae",
+                            Id = "545d6e05-4d08-479b-a762-05346959598b",
+                            ConcurrencyStamp = "aacfec25-3462-4870-b1f8-17ae2718b02b",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "cf8d4cc8-0d18-4d16-88d8-234d004c47f5",
-                            ConcurrencyStamp = "4b5de7c0-a580-4861-80d7-1df54a5b4ecd",
+                            Id = "2f12d7a0-7c2f-44d4-986b-a30bd8468518",
+                            ConcurrencyStamp = "ae0706d9-f648-4433-82d1-d5dbab1056c8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -379,15 +382,19 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.Comment", b =>
                 {
-                    b.HasOne("API.Models.Card", null)
+                    b.HasOne("API.Models.Card", "Card")
                         .WithMany("Comments")
-                        .HasForeignKey("CardId");
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Card");
 
                     b.Navigation("User");
                 });
@@ -486,6 +493,11 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.Project", b =>
                 {
                     b.Navigation("Columns");
+                });
+
+            modelBuilder.Entity("API.Models.User", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,7 +14,7 @@ export const projectsSlice = createSlice({
             state.projects.push(action.payload)
         },
         deleteProject: (state, action) => {
-            state.projects.pop(state.projects.filter((project) => project.id === action.payload))
+            state.projects = state.projects.filter((project) => project.id !== action.payload)
         }
     }
 })

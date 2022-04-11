@@ -24,6 +24,7 @@ public class ColumnsController : ControllerBase {
         
         var columns = await _context.Columns
             .Where(c => c.ProjectId == projectId)
+            .OrderBy(c => c.Order)
             .ToListAsync();
         
         return Ok(columns);
@@ -39,7 +40,8 @@ public class ColumnsController : ControllerBase {
 
         var column = new Column {
             Title = dto.Title,
-            ProjectId = projectId
+            ProjectId = projectId,
+            Order = dto.Order ?? 0
         };
         
         await _context.Columns.AddAsync(column);
@@ -61,6 +63,7 @@ public class ColumnsController : ControllerBase {
         if(column == null) return NotFound($"No Columns found with Id: {id}");
         
         column.Title = dto.Title;
+        column.Order = dto.Order ?? column.Order;
         _context.SaveChanges();
         
         return Ok(column);

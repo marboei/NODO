@@ -75,15 +75,15 @@ public class ProjectsController : ControllerBase {
     [HttpPut("{id}/user/{userId}")]
     public async Task<IActionResult> Update(int id, string userId) {
         var project = await _context.Projects.SingleOrDefaultAsync(p => p.Id == id);
-        if (project == null) {
+        /*if (project == null) {
             return NotFound($"No projects found with Id: {id}");
-        }
+        }*/
         
         var user = await _userManager.FindByIdAsync(userId);
-        if (user == null) {
+        /*if (user == null) {
             return NotFound($"No users found with Id: {userId}");
-        }
-        project.Users?.Add(user);
+        }*/
+        project?.Users?.Add(user);
         
         _context.SaveChanges();
 

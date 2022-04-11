@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace API.Models; 
 
 public class Card {
@@ -15,8 +17,8 @@ public class Card {
     public string? Label { get; set; }
     
     public DateTime? DueDate { get; set; }
-    
-    public virtual List<Comment> Comments { get; set; }
+    [JsonIgnore]
+    public virtual List<Comment>? Comments { get; set; }
     
     
     

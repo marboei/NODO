@@ -200,24 +200,7 @@ export default function PrimarySearchAppBar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-                        {
-                            currentProject !== null ? (
-                                <>
-                                    <AvatarGroup max={4}>
-                                        {
-                                            members.filter(member => member.id !== user.id)
-                                            .map(member => (
-                                                <Avatar {...stringAvatar(`${member.firstName} ${member.lastName}`)}
-                                                        key={member.id} sx={{margin: '10px', bgcolor: `${member.firstName} ${member.lastName}`.toColor()}}/>
-                                            ))
-                                        }
-                                    </AvatarGroup>
-                                    <Divider orientation="vertical" flexItem>
-                                        MEMBERS
-                                    </Divider>
-                                </>
-                            ) : ''
-                        }
+                        
                         { user ? (
                                 <IconButton
                                     size="large"

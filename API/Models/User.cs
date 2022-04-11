@@ -10,4 +10,7 @@ public class User : IdentityUser {
     public virtual List<Project>? Projects { get; set; }
     [JsonIgnore]
     public virtual List<Card>? CardsAssigned { get; set; } 
+    
+    [JsonIgnore]
+    public virtual List<Comment>? Comments { get; set; }
 }

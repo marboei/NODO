@@ -11,17 +11,18 @@ import {useEffect, useState} from "react";
 import agent from "../Data/agent";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import { useDrop } from "react-dnd";
+import {useDrag, useDrop} from "react-dnd";
 import { TransitionGroup } from 'react-transition-group';
 import Box from "@mui/material/Box";
 import CloseIcon from '@mui/icons-material/Close';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 
 export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) => {
     
+    const dispatch = useDispatch()
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [columnClicked, setColumnClicked] = useState(false);
@@ -29,13 +30,19 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     const [dropped, setDropped] = useState(false);
     const [addTaskClicked, setAddTaskClicked] = useState(false)
     const {task} = useSelector(state => state.task)
+    const {columns} = useSelector(state => state.columns)
+
     
-    const [{isOver, monitor}, drop] = useDrop(() => ({
+    const [{}, drop] = useDrop(() => ({
         accept: "task",
         drop: async (item) => {
             await addTaskToColumn(item.id, item.columnId, item.title)
         }
     }))
+    
+    
+    
+    
     
     
     //fetches tasks from db according to it's column and stores them in tasks state
@@ -71,6 +78,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
         setAddTaskClicked(false)
         const addedTask = await agent.task.add(projectId, column.id, {title: newTask})
         setTasks([...tasks, addedTask])
+        
         
         e.target.value = ''
         setNewTask('')
@@ -117,8 +125,8 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     return (
         <div >
             {/*renders tasks inside column*/}
-            <Card sx={{ maxWidth: 400, margin: 4, bgcolor: '#b8b0b9'}}>
-                <CardContent ref={drop} sx={{whiteSpace: 'normal' }}>
+            <Card sx={{ maxWidth: 400, margin: 4, bgcolor: '#b8b0b9'}} >
+                <CardContent  ref={drop}  sx={{whiteSpace: 'normal' }}>
                     {
                         columnClicked ? (
                             <ClickAwayListener onClickAway={handleClickAway}>
@@ -132,7 +140,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
                         ) : (
                         <Grid container>
                         <Grid item xs={8}>
-                        <Typography variant='h6' onClick={handleColumnClick}>
+                        <Typography variant='h6' onClick={handleColumnClick} >
                     {column.title}
                         </Typography>
                         </Grid>
@@ -147,7 +155,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
                     }
                     
                     {/*renders all tasks*/}
-                    <TransitionGroup sx={{margin: '0px'}}>
+                    <TransitionGroup sx={{margin: '0px'}} >
                         {tasks.map(task => (
                             <Collapse key={task.id} {...({timeout: 800})}>
                                 <Task key={task.id} task={task} handleDelete={handleDelete} updateTask={updateTask} removeTaskAfterDrag={removeTaskAfterDrag}/>
@@ -173,7 +181,7 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
                     <Box textAlign='center'>
                         {
                             addTaskClicked ? (
-                                <Fab size="small" color="#8a0000" aria-label="add" sx={{marginTop: '8px'}} onClick={() => setAddTaskClicked(false)}>
+                                <Fab size="small"  aria-label="add" sx={{marginTop: '8px'}} onClick={() => setAddTaskClicked(false)}>
                                     <CloseIcon/>
                                 </Fab>
                             ) : (

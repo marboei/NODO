@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
+using API.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers; 
 
@@ -51,6 +53,13 @@ public class AccountController : ControllerBase {
         
         var dto = _authService.GetCurrentUser(User, Request);
         return Ok(dto.Result);
+    }
+
+    [HttpGet]
+    public async Task<List<User>> GetUsers(string searchTerm) {
+        var query = _userManager.Users.Search(searchTerm).AsQueryable();
+
+        return await query.ToListAsync();
     }
     
 }

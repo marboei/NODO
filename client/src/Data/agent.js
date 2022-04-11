@@ -30,6 +30,10 @@ const account = {
             localStorage.setItem('user', JSON.stringify(response.data))
         }
         return response.data;
+    },
+    getAll: async(username) => {
+        const response = await api.get('account', {params: {searchTerm: username}})
+        return response.data;
     }
 }
 
@@ -44,6 +48,10 @@ const project = {
     },
     getProjectUsers: async(projectId) => {
         const response = await api.get(`projects/${projectId}/users`, config)
+        return response.data
+    },
+    addUserToProject: async(projectId, userId) => {
+        const response = await api.put(`projects/${projectId}/user/${userId}`,{}, config)
         return response.data
     },
     getById: async(projectId) => {
@@ -117,6 +125,10 @@ const comment = {
         const response = await api.post(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments`, comment, config);
         return response.data
     },
+    delete: async(projectId, columnId, cardId, id) => {
+        const response = await api.delete(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments/${id}`, config);
+        return response.data
+    }
 }
 
 
