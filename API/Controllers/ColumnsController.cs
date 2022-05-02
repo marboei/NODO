@@ -29,6 +29,17 @@ public class ColumnsController : ControllerBase {
         
         return Ok(columns);
     }
+    [Route("api/projects/{projectId}/columns/{id}")]
+    [HttpGet()]
+    public async Task<IActionResult> GetByIdAsync(int projectId, int id) {
+        var column = await _context.Columns.FindAsync(id);
+        if (column == null) {
+            return NotFound($"No projects found with Id: {id}");
+        }
+        
+        return Ok(column);
+    }
+
     
     [Route("api/projects/{projectId}/columns")]
     [HttpPost]
@@ -62,7 +73,7 @@ public class ColumnsController : ControllerBase {
         
         if(column == null) return NotFound($"No Columns found with Id: {id}");
         
-        column.Title = dto.Title;
+        column.Title = dto.Title ?? column.Title;
         column.Order = dto.Order ?? column.Order;
         _context.SaveChanges();
         

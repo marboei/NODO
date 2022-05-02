@@ -24,7 +24,7 @@ public class CardsController : ControllerBase{
         if (_context.Projects.SingleOrDefault(p=>projectId == p.Id) == null) return NotFound($"No projects found with Id: {projectId}");
         if (_context.Columns.SingleOrDefault(c=>columnId == c.Id) == null) return NotFound($"No columns found with Id: {columnId}");
 
-        var cards = await _context.Cards.Where(c => c.ColumnId == columnId).ToListAsync();
+        var cards = await _context.Cards.Where(c => c.ColumnId == columnId).OrderBy(c=> c.Order).ToListAsync();
         return Ok(cards);
     }
 
@@ -44,7 +44,8 @@ public class CardsController : ControllerBase{
 
         var card = new Card {
             Title = dto.Title,
-            ColumnId = columnId
+            ColumnId = columnId,
+            Order = dto.Order ?? 0
         };
         
         await _context.Cards.AddAsync(card);
@@ -66,14 +67,21 @@ public class CardsController : ControllerBase{
         
         card.Title = dto.Title ?? card.Title;
         card.Description = dto.Description ?? card.Description;
-        card.Label = dto.Label ?? card.Label;
         card.DueDate = dto.DueDate ?? card.DueDate;
         card.ColumnId = dto.ColumnId ?? card.ColumnId;
+        card.Order = dto.Order ?? card.Order;
+        card.Completed = dto.Completed ?? card.Completed;
 
         dto.AssignedTo?.ForEach(async userId => {
             var userAsync = await _userManager.FindByIdAsync(userId);
             card.AssignedTo?.Add(userAsync);
         });
+        
+        dto.Labels?.ForEach( label => {
+            card.Labels?.Add(label);
+        });
+
+        
 
         _context.SaveChanges();
         
@@ -96,4 +104,37 @@ public class CardsController : ControllerBase{
         
         return Ok(card);
     }
+
+    [Route("api/user/{userId}/cards")]
+    [HttpGet]
+    public async Task<IActionResult> GetAssignedCards(string userId) {
+        var user = await _userManager.FindByIdAsync(userId);
+        
+        if(user == null) return NotFound($"No users found with Id: {userId}");
+        
+        var cards = await _context.Users
+            .Include(u => u.CardsAssigned)
+            .Where(u=>u.Id == userId).Select(u => u.CardsAssigned)
+            .ToListAsync();
+
+        var dtos = new List<UserAssignedCardDto>();
+        
+        cards[0].ForEach(card => {
+            if (!card.Completed) {
+                dtos.Add(new UserAssignedCardDto {
+                    Title = card.Title,
+                    CardId = card.Id,
+                    ColumnId = card.ColumnId,
+                    ProjectId = card.Column.ProjectId,
+                    UserId = userId,
+                    ProjectTitle = card.Column.Project.Title,
+                    ColumnTitle = card.Column.Title
+                });
+            }
+            
+        });
+        
+        return Ok(dtos);
+    }
 }
+

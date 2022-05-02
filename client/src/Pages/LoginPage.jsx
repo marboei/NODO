@@ -34,7 +34,8 @@ export default function LoginPage() {
         try{
             const result = await agent.account.login(data);
             dispatch(setUser(JSON.parse(localStorage.getItem('user')) || null))
-            navigate('/projects');
+            navigate('/');
+            window.location.reload();
         }
         catch{
             setIsAuthorized( false);

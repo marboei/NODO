@@ -13,5 +13,20 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="postgresStore" uuid="0fb06556-85e0-4a34-b355-eb588150e9e7">
+      <database-info product="PostgreSQL" version="14.2 (Debian 14.2-1.pgdg110+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.3.3" dbms="POSTGRES" exact-version="14.2" exact-driver-version="42.3">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>appuser</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="store">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>

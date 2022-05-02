@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'http://localhost:5001/api/'
+    baseURL:process.env.REACT_APP_API_URL
 })
 const user = JSON.parse(localStorage.getItem('user'));
 const config = {
@@ -51,7 +51,11 @@ const project = {
         return response.data
     },
     addUserToProject: async(projectId, userId) => {
-        const response = await api.put(`projects/${projectId}/user/${userId}`,{}, config)
+        const response = await api.post(`projects/${projectId}/user/${userId}`,{}, config)
+        return response.data
+    },
+    removeUserFromProject: async(projectId, userId) => {
+        const response = await api.delete(`projects/${projectId}/user/${userId}`, config)
         return response.data
     },
     getById: async(projectId) => {
@@ -78,6 +82,10 @@ const column = {
         const response = await api.get(`projects/${projectId}/columns`, config);
         return response.data
     },
+    getById: async(projectId, columnId) => {
+        const response = await api.get(`projects/${projectId}/columns/${columnId}`, config)
+        return response.data
+    },
     
     add: async(projectId, column) => {
         const response = await api.post(`projects/${projectId}/columns`, column, config);
@@ -96,6 +104,10 @@ const column = {
 const task = {
     getAll: async(projectId, columnId) => {
         const response = await api.get(`projects/${projectId}/columns/${columnId}/cards`, config);
+        return response.data
+    },
+    getAssignedCards: async(userId) => {
+        const response = await api.get(`user/${userId}/cards`, config);
         return response.data
     },
     delete: async(projectId, columnId, taskId) => {
@@ -131,13 +143,57 @@ const comment = {
     }
 }
 
+const label = {
+    getAll: async(projectId, columnId, cardId) => {
+        const response = await api.get(`projects/${projectId}/columns/${columnId}/cards/${cardId}/labels`, config);
+        return response.data
+    },
+    add: async(projectId, columnId, cardId, label) => {
+        const response = await api.post(`projects/${projectId}/columns/${columnId}/cards/${cardId}/labels`, label, config);
+        return response.data
+    },
+    delete: async(projectId, columnId, cardId, id) => {
+        const response = await api.delete(`projects/${projectId}/columns/${columnId}/cards/${cardId}/labels/${id}`, config);
+        return response.data
+    }
+}
+
+const assignedTo = {
+    getAll: async(projectId, columnId, cardId) => {
+        const response = await api.get(`projects/${projectId}/columns/${columnId}/cards/${cardId}/assignedTo`, config);
+        return response.data
+    },
+    add: async(projectId, columnId, cardId, assignedTo) => {
+        const response = await api.post(`projects/${projectId}/columns/${columnId}/cards/${cardId}/assignedTo`, assignedTo, config);
+        return response.data
+    },
+    delete: async(projectId, columnId, cardId, id) => {
+        const response = await api.delete(`projects/${projectId}/columns/${columnId}/cards/${cardId}/assignedTo/${id}`, config);
+        return response.data
+    }
+}
+
+const like = {
+    add: async(projectId, columnId, cardId, commentId, like) => {
+        const response = await api.post(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments/${commentId}/likes`, like, config);
+        return response.data
+    },
+    delete: async(projectId, columnId, cardId, commentId, userId) => {
+        const response = await api.delete(`projects/${projectId}/columns/${columnId}/cards/${cardId}/comments/${commentId}/likes/${userId}`, config);
+        return response.data
+    }
+}
+
 
 const agent = {
     account,
     project,
     column,
     task,
-    comment
+    comment,
+    label,
+    assignedTo,
+    like
 }
 
 export default agent;

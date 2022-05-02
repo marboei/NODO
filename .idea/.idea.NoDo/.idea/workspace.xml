@@ -6,53 +6,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API/DTO/SearchUserDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Extensions/UserExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406055048_AddedOrderToColumns.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406055048_AddedOrderToColumns.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062234_AddedCommentsToUser.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062234_AddedCommentsToUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062521_AddedCommentsToUser2.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062521_AddedCommentsToUser2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062947_AddedCommentsToUser3.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406062947_AddedCommentsToUser3.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406063413_AddedCommentsToUser4.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406063413_AddedCommentsToUser4.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406063913_AddedCommentsToUser5.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406063913_AddedCommentsToUser5.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406065426_AddedCommentsToUser6.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220406065426_AddedCommentsToUser6.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220410220620_CorrectedTypo.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/Migrations/20220410220620_CorrectedTypo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/Components/Search.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/store/Slices/uselessSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/dataSources/61637606-37bf-4d82-bb26-f555ac36470a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/API/API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/CardsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CardsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ColumnsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CommentsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/DTO/CardDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/DTO/CardDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/DTO/ColumnDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/DTO/ColumnDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221001938_AddedBaseModels.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221001938_AddedBaseModels.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221212527_ModifiedColumn.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221212527_ModifiedColumn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221225105_ModifiedCard.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221225105_ModifiedCard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221225926_ModifiedCardName.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220221225926_ModifiedCardName.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220303215026_IdentityAdded.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220303215026_IdentityAdded.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220307141709_ProjectUserAdded.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220307141709_ProjectUserAdded.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220327235106_AddedLabelDescDueAssignedToCard.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220327235106_AddedLabelDescDueAssignedToCard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220327235656_AddedCardsAssignedToUser.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220327235656_AddedCardsAssignedToUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220405030503_AddedCommentModel.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220405030503_AddedCommentModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406055048_AddedOrderToColumns.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406055048_AddedOrderToColumns.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062234_AddedCommentsToUser.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062234_AddedCommentsToUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062521_AddedCommentsToUser2.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062521_AddedCommentsToUser2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062947_AddedCommentsToUser3.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406062947_AddedCommentsToUser3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406063413_AddedCommentsToUser4.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406063413_AddedCommentsToUser4.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406063913_AddedCommentsToUser5.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406063913_AddedCommentsToUser5.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406065426_AddedCommentsToUser6.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220406065426_AddedCommentsToUser6.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220410220620_CorrectedTypo.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/20220410220620_CorrectedTypo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Models/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Models/Column.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Column.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Comment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/store.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/API/store.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/store.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/API/store.db-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/store.db-shm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/store.db-wal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/10.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/11.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/12.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/13.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/14.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/15.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/16.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/17.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" afterDir="false" />
@@ -61,63 +79,26 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/9.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/defaultTheme/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/defaultTheme/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/legacy/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/legacy/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/modern/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/modern/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/node/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/node/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/private-theming/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/types/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/types/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/types/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/types/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/types/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/HTMLElementType.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/HTMLElementType.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/chainPropTypes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/chainPropTypes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/createChainedFunction.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/createChainedFunction.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/deepmerge.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/deepmerge.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/elementAcceptingRef.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/elementAcceptingRef.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/elementTypeAcceptingRef.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/elementTypeAcceptingRef.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/exactProp.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/exactProp.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/formatMuiErrorMessage.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/formatMuiErrorMessage.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/getDisplayName.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/getDisplayName.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/getScrollbarSize.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/getScrollbarSize.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/integerPropType.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/integerPropType.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/isMuiElement.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/isMuiElement.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/legacy/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/legacy/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/modern/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/modern/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/ownerDocument.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/ownerDocument.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/ownerWindow.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/ownerWindow.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/ponyfillGlobal.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/ponyfillGlobal.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/refType.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/refType.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/resolveProps.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/resolveProps.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/setRef.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/setRef.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/useEventCallback.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/useEventCallback.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/useEventCallback.spec.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/useEventCallback.spec.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/useForkRef.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/useForkRef.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/useId.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/useId.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/useIsFocusVisible.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/useIsFocusVisible.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/usePreviousProps.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/usePreviousProps.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/@mui/utils/visuallyHidden.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@mui/utils/visuallyHidden.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/csstype/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/csstype/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/csstype/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/csstype/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/csstype/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/csstype/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/csstype/index.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/csstype/index.js.flow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/node_modules/csstype/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/csstype/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Column.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Column.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Comment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Comment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SearchUsers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Task.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/TaskDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/TaskDetails.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Toolbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Toolbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Data/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Data/agent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/HomePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/Slices/columnsSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/Slices/columnsSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/Slices/projectsSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/Slices/projectsSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ViewPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Utils/stringAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Utils/stringAvatar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/configureStore.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +134,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -162,7 +144,7 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Native Executable.client">
+  <component name="RunManager" selected=".NET Launch Settings Profile.API">
     <configuration name="API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/API/API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
@@ -272,7 +254,24 @@
       <workItem from="1649416446020" duration="6189000" />
       <workItem from="1649491688753" duration="7189000" />
       <workItem from="1649596087968" duration="14887000" />
-      <workItem from="1649711339729" duration="322000" />
+      <workItem from="1649711339729" duration="2692000" />
+      <workItem from="1649757243265" duration="2412000" />
+      <workItem from="1649761482317" duration="5818000" />
+      <workItem from="1649853976832" duration="4435000" />
+      <workItem from="1649952698276" duration="2007000" />
+      <workItem from="1650051058514" duration="8830000" />
+      <workItem from="1650312980147" duration="2878000" />
+      <workItem from="1650381588443" duration="1851000" />
+      <workItem from="1650642064567" duration="114000" />
+      <workItem from="1650642207280" duration="6274000" />
+      <workItem from="1650662146073" duration="70000" />
+      <workItem from="1650662324602" duration="3149000" />
+      <workItem from="1650726925005" duration="1999000" />
+      <workItem from="1651091043495" duration="11499000" />
+      <workItem from="1651184128298" duration="7758000" />
+      <workItem from="1651268379050" duration="8542000" />
+      <workItem from="1651356854408" duration="9525000" />
+      <workItem from="1651434461925" duration="23255000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1645400799268</created>
@@ -365,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649223854444</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="&gt;Added adding members functionality to projects and tasks">
+      <created>1649711729422</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649711729422</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +406,20 @@
     <MESSAGE value="&gt;Added Login and Register functionality&#10;&gt;Added a basic Toolbar" />
     <MESSAGE value="&gt;Polished design&#10;&gt;Added Toolbar&#10;&gt;Added project members functionality" />
     <MESSAGE value="&gt;Added Task Details(Assigned to, Description, Comments)" />
-    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added Task Details(Assigned to, Description, Comments)" />
+    <MESSAGE value="&gt;Added adding members functionality to projects and tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="&gt;Added adding members functionality to projects and tasks" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx</url>
+          <line>6</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

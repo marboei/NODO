@@ -16,6 +16,7 @@ import { TransitionGroup } from 'react-transition-group';
 import Box from "@mui/material/Box";
 import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux";
+import {setColumns} from "../store/Slices/columnsSlice";
 
 
 
@@ -36,8 +37,34 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
     const [{}, drop] = useDrop(() => ({
         accept: "task",
         drop: async (item) => {
-            await addTaskToColumn(item.id, item.columnId, item.title)
+            if(item.columnId !== column.id) {
+                await addTaskToColumn(item.id, item.columnId, item.title)
+            }
+            
         }
+    }))
+
+    const [{}, dropp] = useDrop(() => ({
+        accept: "column",
+        drop: async (item) => {
+            let draggedColumn = await agent.column.getById(projectId, item.id)
+            let droppedColumn = await agent.column.getById(projectId, column.id)
+            await agent.column.update(projectId,column.id, {order: draggedColumn.order})
+            await agent.column.update(projectId,item.id, {order: droppedColumn.order})
+            let newColumns = await agent.column.getAll(projectId)
+            dispatch(setColumns(newColumns))
+        }
+    }))
+
+    const [{monitor}, drag] = useDrag(() => ({
+        type: "column",
+        item: {id: column.id, title: column.title, order: column.order},
+        collect: (monitor) => ({
+            monitor: monitor
+        })/*,
+        end: (item) => {
+            if(monitor.getDropResult()) removeTaskAfterDrag(item.id, item.columnId, item.order)
+        }*/
     }))
     
     
@@ -55,28 +82,37 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
         fetchProjects()
 
 
-    },[task,column.id, dropped])
+    },[task,column.id, dropped, columns, column])
 
     const addTaskToColumn = async (id, columnId, title) => {
-        
-        const addedTask = await agent.task.update(projectId, columnId, id, {title: title, columnId: column.id})
-        setTasks(await agent.task.getAll(projectId, column.id))
+        const thisTasks = await agent.task.getAll(projectId, column.id)
+        let tasksLength = thisTasks.length;
+        const addedTask = await agent.task.update(projectId, columnId, id, {title: title, columnId: column.id, order: tasksLength + 1})
+        const tusks = tasks
+        tusks.push(addedTask)
+        setTasks(tusks)
         setDropped(true)
     }
     
     //handles task deletion
     //>passes this function to child component(Task) to take an individual task id as a parameter
     const handleDelete = async (id) => {
-        let newTasks = tasks.filter((task) => task.id !== id)
-        setTasks(newTasks)
-        await agent.task.delete(projectId, column.id, id)
+        /*let newTasks = tasks.filter((task) => task.id !== id)*/
+        const deletedTask = await agent.task.delete(projectId, column.id, id)
+        for (const task1 of tasks) {
+            if(task1.order > deletedTask.order){
+                await agent.task.update(projectId, column.id, task1.id, {order: task1.order - 1})
+            }
+        }
+        setTasks(await agent.task.getAll(projectId, column.id))
     }
     
     //creates a new task after user submits the creation form
     const handleNewTaskSubmit = async (e) => {
         e.preventDefault();
         setAddTaskClicked(false)
-        const addedTask = await agent.task.add(projectId, column.id, {title: newTask})
+        let tasksLength = tasks.length;
+        const addedTask = await agent.task.add(projectId, column.id, {title: newTask, order: tasksLength ? tasksLength + 1 : 1})
         setTasks([...tasks, addedTask])
         
         
@@ -113,19 +149,26 @@ export const Column = ({column, handleDeleteColumn, updateColumn , projectId}) =
        
     }
     
-    const removeTaskAfterDrag = async (id, columnId) => {
+    const removeTaskAfterDrag = async (id, columnId, order) => {
         if (columnId === column.id) {
-            let tasksAfterRemoved = await agent.task.getAll(projectId, column.id)
-            
-            setTasks(tasksAfterRemoved.filter(t => t.id !== id))
+            const thisTasks = await agent.task.getAll(projectId, column.id)
+            for (const task1 of thisTasks) {
+                if(task1.order > order){
+                    await agent.task.update(projectId, column.id, task1.id, {order: task1.order - 1})
+                }
+            }
+            const updatedTasks = await agent.task.getAll(projectId, column.id)
+            setTasks(updatedTasks.filter(task => task.id !== id))
         }
 
     }
     
     return (
-        <div >
+        <div ref={dropp}>
             {/*renders tasks inside column*/}
-            <Card sx={{ maxWidth: 400, margin: 4, bgcolor: '#b8b0b9'}} >
+            <Card sx={{ maxWidth: 400, margin: 4, bgcolor: '#ddd8c4', "&:hover": {
+                    border: '1px solid #545055'
+                }}} ref={drag}>
                 <CardContent  ref={drop}  sx={{whiteSpace: 'normal' }}>
                     {
                         columnClicked ? (

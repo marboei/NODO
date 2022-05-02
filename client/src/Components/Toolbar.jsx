@@ -155,26 +155,21 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" color="secondary">
+            <AppBar position="static" sx={{bgcolor: "#141E27"}}>
                 <Toolbar >
+                    
                     <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography
                         variant="h6"
                         noWrap
                         component="div"
                         onClick={() => navigate('/')}
-                        sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer'}}
+                        sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer', paddingTop: '15px'}}
                     >
-                        NoDo
-                    </Typography>
+                        
+                      
+                        <a onClick={() => navigate('/project')} ><img src='https://i.postimg.cc/xXW1f6cz/nudo3.png' border='0' alt='nodo' height="35" width="100"/></a>
+                        
+                    </IconButton>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -184,7 +179,7 @@ export default function PrimarySearchAppBar() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    {
+                    {/*{
                         user ? (
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 <Button
@@ -195,7 +190,7 @@ export default function PrimarySearchAppBar() {
                                 </Button>
                             </Box>
                         ) : ''
-                    }
+                    }*/}
                     
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

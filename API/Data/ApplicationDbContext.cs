@@ -15,6 +15,9 @@ public class ApplicationDbContext : IdentityDbContext<User> {
     public DbSet<Card> Cards { get; set; }
     
     public DbSet<Comment>? Comments { get; set; }
+    
+
+
 
     protected override void OnModelCreating(ModelBuilder builder) {
         base.OnModelCreating(builder);
@@ -27,6 +30,11 @@ public class ApplicationDbContext : IdentityDbContext<User> {
             .HasOne(b => b.Card)
             .WithMany(a => a.Comments)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<Like>()
+            .HasKey(l => new {l.UserId, l.CommentId});
+
+
 
 
     }
