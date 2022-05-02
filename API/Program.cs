@@ -16,26 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
     );*/
 builder.Services.AddCors();
 // stores the connection string from appsettings.json
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 // adds dbcontext service and connects to database using the connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
-        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        string connStr;
-        
-            var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+      
 
-            connUrl = connUrl.Replace("postgres://", string.Empty);
-            var pgUserPass = connUrl.Split("@")[0];
-            var pgHostPortDb = connUrl.Split("@")[1];
-            var pgHostPort = pgHostPortDb.Split("/")[0];
-            var pgDb = pgHostPortDb.Split("/")[1];
-            var pgUser = pgUserPass.Split(":")[0];
-            var pgPass = pgUserPass.Split(":")[1];
-            var pgHost = pgHostPort.Split(":")[0];
-            var pgPort = pgHostPort.Split(":")[1];
-
-            connStr =
-                $"Server=ec2-63-32-248-14.eu-west-1.compute.amazonaws.com;Port=5432;User Id=tgwzdkzyuutgnt;Password=cc27a9d3939ab117899d6bf403dc3dec7f953bbff11eef99448df8e7e9d00e6f;Database=d9tkt21brlt6of;sslmode=Prefer;Trust Server Certificate=true";
+            string connStr = "Server=ec2-63-32-248-14.eu-west-1.compute.amazonaws.com;Port=5432;User Id=tgwzdkzyuutgnt;Password=cc27a9d3939ab117899d6bf403dc3dec7f953bbff11eef99448df8e7e9d00e6f;Database=d9tkt21brlt6of;sslmode=Prefer;Trust Server Certificate=true";
         
 
         options.UseNpgsql(connStr);
