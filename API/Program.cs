@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
 using API.Data;
@@ -22,44 +21,38 @@ builder.Services.AddCors();
 // adds dbcontext service and connects to database using the connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
       
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        string connStr;
+        
+            var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-        string connectionString = null;
+            connUrl = connUrl.Replace("postgres://", string.Empty);
+            var pgUserPass = connUrl.Split("@")[0];
+            var pgHostPortDb = connUrl.Split("@")[1];
+            var pgHostPort = pgHostPortDb.Split("/")[0];
+            var pgDb = pgHostPortDb.Split("/")[1];
+            var pgUser = pgUserPass.Split(":")[0];
+            var pgPass = pgUserPass.Split(":")[1];
+            var pgHost = pgHostPort.Split(":")[0];
+            var pgPort = pgHostPort.Split(":")[1];
 
-        string envVar = Environment.GetEnvironmentVariable("DATABASE_URL");
-
-        if (string.IsNullOrEmpty(envVar)){
-
-            connectionString = builder.Configuration["Connectionstrings:database"];
-
-        } else{
-
-            //parse database URL. Format is postgres://<username>:<password>@<host>/<dbname>
-
-            var uri = new Uri(envVar);
-
-            var username = uri.UserInfo.Split(':')[0];
-
-            var password = uri.UserInfo.Split(':')[1];
-
-            connectionString =
-
-                "; Database=" + uri.AbsolutePath.Substring(1) +
-
-                "; Username=" + username +
-
-                "; Password=" + password + 
-
-                "; Port=" + uri.Port +
-
-                "; SSL Mode=Require; Trust Server Certificate=true;";
-
-        }
-
+            connStr =
+                $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require;Trust Server Certificate=true";
         
 
-        options.UseNpgsql(connectionString);
+        options.UseNpgsql(connStr);
     }
 );
+
+var host = WebApplication.CreateBuilder(args).Build();
+
+using (var scope = host.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+}
+
+host.Run();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
