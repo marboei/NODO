@@ -38,7 +38,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
             var pgPort = pgHostPort.Split(":")[1];
 
             connStr =
-                $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require;Trust Server Certificate=true";
+                $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true";
         }
 
         options.UseNpgsql(connStr);
