@@ -16,12 +16,23 @@ var builder = WebApplication.CreateBuilder(args);
     );*/
 builder.Services.AddCors();
 // stores the connection string from appsettings.json
+static string GetHerokuConnectionString()
+{
+    string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+    var databaseUri = new Uri(connectionUrl);
+
+    string db = databaseUri.LocalPath.TrimStart('/');
+    string[] userInfo = databaseUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
+
+    return $"User ID={userInfo[0]};Password={userInfo[1]};Host={databaseUri.Host};Port={databaseUri.Port};Database={db};Pooling=true;SSL Mode=Require;Trust Server Certificate=True;";
+}
 
 // adds dbcontext service and connects to database using the connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
       
 
-            string connStr = "Server=ec2-63-32-248-14.eu-west-1.compute.amazonaws.com;Port=5432;User Id=tgwzdkzyuutgnt;Password=cc27a9d3939ab117899d6bf403dc3dec7f953bbff11eef99448df8e7e9d00e6f;Database=d9tkt21brlt6of;sslmode=Prefer;Trust Server Certificate=true";
+            string connStr = GetHerokuConnectionString();
         
 
         options.UseNpgsql(connStr);
