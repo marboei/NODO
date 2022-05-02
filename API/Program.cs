@@ -21,10 +21,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
         var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
         string connStr;
-        if (env == "Development") {
-            connStr = connectionString;
-        }
-        else {
+        
             var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
             connUrl = connUrl.Replace("postgres://", string.Empty);
@@ -38,8 +35,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
             var pgPort = pgHostPort.Split(":")[1];
 
             connStr =
-                $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true";
-        }
+                $"Server=ec2-63-32-248-14.eu-west-1.compute.amazonaws.com;Port=5432;User Id=tgwzdkzyuutgnt;Password=cc27a9d3939ab117899d6bf403dc3dec7f953bbff11eef99448df8e7e9d00e6f;Database=d9tkt21brlt6of;sslmode=Prefer;Trust Server Certificate=true";
+        
 
         options.UseNpgsql(connStr);
     }
