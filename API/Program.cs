@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json.Serialization;
 using API.Data;
@@ -18,8 +19,9 @@ builder.Services.AddCors();
 // stores the connection string from appsettings.json
 static string GetHerokuConnectionString()
 {
-    string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    string? connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
+    Debug.Assert(connectionUrl != null, nameof(connectionUrl) + " != null");
     var databaseUri = new Uri(connectionUrl);
 
     string db = databaseUri.LocalPath.TrimStart('/');
