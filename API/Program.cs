@@ -44,15 +44,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     }
 );
 
-var host = WebApplication.CreateBuilder(args).Build();
-
-using (var scope = host.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
-}
-
-host.Run();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
