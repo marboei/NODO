@@ -78,6 +78,7 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
         setDescriptionClicked(false)
         setNewTitle(task.title)
         setTitleClicked(false)
+        console.log(task)
     },[dispatch, task, comments])
     
     const handleDescriptionSubmit = async (e) => {
@@ -100,7 +101,8 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
         const updatedTask = await agent.comment.add(projectId, task.columnId, task.id, {userId: user.id, text: newComment})
         console.log(updatedTask)
         dispatch(setTask(updatedTask))
-        dispatch(setComments(updatedTask.comments))
+        let Comments = await agent.comment.getAll(projectId, task.columnId, task.id)
+        dispatch(setComments(Comments))
         setNewComment('')
     }
 
@@ -199,9 +201,12 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
                                             <LabelsEdit labels={task.labels}/>
                                         </Popover>
                                         {
-                                            task.labels.map(label => (
-                                                <Chip label={label.text} variant="outlined" key={label.id} onDelete={() => handleLabelsDelete(label)}/>
-                                            ))
+                                            task.labels ? 
+                                                task.labels.map(label => (
+                                                    <Chip label={label.text} variant="outlined" key={label.id} onDelete={() => handleLabelsDelete(label)}/>
+                                                )) : ''
+                                                
+                                           
                                         }
                                     </div>
                                 )}
@@ -227,6 +232,7 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
 
                                         </Popover>
                                         {
+                                            task.assignedTo ? 
                                             task.assignedTo.map(member => (
                                                 <Tooltip title={`${member.firstName} ${member.lastName}`} arrow>
                                                     <Chip
@@ -238,7 +244,7 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
                                                         onDelete={() => handleAssignedToDelete(member)}
                                                     />
                                                 </Tooltip>
-                                            ))
+                                            )) : ''
                                         }
                                     </div>
 
@@ -347,9 +353,10 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
                                                     <LabelsEdit labels={task.labels}/>
                                                 </Popover>
                                                 {
+                                                    task.labels ?
                                                     task.labels.map(label => (
                                                         <Chip label={label.text} variant="outlined" key={label.id} onDelete={() => handleLabelsDelete(label)}/>
-                                                    ))
+                                                    )) : ''
                                                 }
                                             </div>
                                         )}
@@ -375,6 +382,7 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
 
                                                 </Popover>
                                                 {
+                                                    task.assignedTo ?
                                                     task.assignedTo.map(member => (
                                                         <Tooltip title={`${member.firstName} ${member.lastName}`} arrow>
                                                             <Chip
@@ -386,7 +394,7 @@ export const TaskDetails = ({taskClicked, handleClickAway, handleDelete}) => {
                                                                 onDelete={() => handleAssignedToDelete(member)}
                                                             />
                                                         </Tooltip>
-                                                    ))
+                                                    )) : ''
                                                 }
                                             </div>
 

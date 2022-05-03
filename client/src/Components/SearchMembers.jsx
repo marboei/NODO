@@ -32,10 +32,14 @@ export const SearchMembers = ({handleSubmit}) => {
                 onChange={async (e) => {
                     setSearchText(e.target.value)
                     let filteredUsers = members
-                    task.assignedTo.forEach(member => {
-                        filteredUsers = filteredUsers.filter(user => user.userName !== member.userName)
-                    })
+                    if(task.assignedTo){
+                        task.assignedTo.forEach(member => {
+                            filteredUsers = filteredUsers.filter(user => user.userName !== member.userName)
+                        })
+                    }
+                    console.log(filteredUsers)
                     if(searchText.length === 0) {setUsersQuery([])} else {setUsersQuery(filteredUsers)}
+                    
                 }}
                 value={searchText}  label="Search User" sx={{bgcolor: '#eeedde'}}
                 onClick={() => setTextAreaClicked(true)}
@@ -56,6 +60,7 @@ export const SearchMembers = ({handleSubmit}) => {
                         }}
                               subheader={<li />}>
                             {
+                                usersQuery != null ?
                                 usersQuery.map(user => (
                                     <ListItem sx={{padding: 0}}>
                                         <ListItemButton onClick={() => handleSubmit(user)}>
@@ -66,7 +71,7 @@ export const SearchMembers = ({handleSubmit}) => {
                                             <ListItemText primary={user.userName} />
                                         </ListItemButton>
                                     </ListItem>
-                                ))
+                                )) : ''
                             }
 
                         </List>

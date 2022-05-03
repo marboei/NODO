@@ -1,7 +1,19 @@
 
 import * as React from 'react';
 import {Column} from "../Components/Column";
-import {AvatarGroup, Chip, Fab, Grid, Grow, IconButton, Link, Paper, Popover, Typography} from "@mui/material";
+import {
+    AvatarGroup,
+    Chip,
+    ClickAwayListener,
+    Fab,
+    Grid,
+    Grow,
+    IconButton,
+    Link,
+    Paper,
+    Popover, TextField,
+    Typography
+} from "@mui/material";
 import {useEffect, useState} from "react";
 import agent from "../Data/agent";
 import {DndProvider, useDrag, useDrop} from "react-dnd";
@@ -18,6 +30,9 @@ import {
 } from "../store/Slices/columnsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Members} from "../Components/Members";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 
 
 export const ProjectPage = () => {
@@ -28,6 +43,8 @@ export const ProjectPage = () => {
     const {projectId} = useParams()
     const [project, setProject] = useState({})
     const [orderCount, setOrderCount] = useState(0)
+    const [titleClicked, setTitleClicked] = useState(false)
+    const [updatedTitle, setUpdatedTitle] = useState(project.title)
     
     
     let transition = 0
@@ -89,20 +106,58 @@ export const ProjectPage = () => {
         dispatch(addColumn(newColumn))
     }
 
+    //changes the taskClicked state to true if a task is clicked 
+    const handleTitleClick = () => {
+        setTitleClicked(true)
+    };
+    //changes taskClicked state to false if user clicks outside of card
+    const handleClickAway = () => {
+        setTitleClicked(false);
+    };
+    //handles the updated task form when submitted
+    const handleTitleUpdateSubmit = async (e) => {
+        e.preventDefault();
+        //called from parent component(Column)
+        const updatedProject = await agent.project.update(projectId, {title: updatedTitle})
+        setProject(updatedProject)
+        setTitleClicked(false);
+
+    }
+
    
    
     return (
         <div>
             <DndProvider backend={HTML5Backend}>
-                <Typography variant="h3" align="center"  margin='30px' marginBottom='20px' letterSpacing={2}>{project.title}</Typography>
+                <Box sx={{textAlign:'center', flex: 'content'}} align="center">
+                    
+                
+                {
+                    titleClicked ? (
+                        <ClickAwayListener onClickAway={handleClickAway}>
+                            <form noValidate autoComplete="off" onSubmit={handleTitleUpdateSubmit} style={{alignItems: 'center', justifyContent:'center', margin:'30px'}}>
+                                <TextField
+                                    onChange={(e) => setUpdatedTitle(e.target.value)}
+                                    value={updatedTitle}  id="outlined-basic"  variant="outlined" color='secondary' sx={{bgcolor: 'white', alignItems:'center'}} align="center"/>
+                            </form>
+                        </ClickAwayListener>
+
+                    ) : (
+                        <Typography sx={{'&:hover':{border: '1px solid',  borderRadius: '10px', display:'inline-block', marginBottom:'0px' }, marginBottom:'9px'}} variant="h3" align="center"  margin='30px' marginBottom='20px' letterSpacing={2} onClick={handleTitleClick}>{project.title}</Typography>
+                        
+                    )
+                }
+
+                
                 <span className="jss3"/>
+                </Box>
                 {/*renders all columns*/}
-                <Grid container marginTop={4}>
+                <Grid container marginTop={4} alignItems="center">
                     <Grid item xs={4}/>
                     <Grid item xs={4}>
                         <Members/>
                     </Grid>
-                    <Grid item xs={5}/>
+                    <Grid item xs={4}/>
                 </Grid>
                 <Grid container sx={{
                     flexWrap: "nowrap",

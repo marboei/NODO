@@ -66,13 +66,14 @@ export default function LabelsEdit({labels}) {
                         }}
                               subheader={<li />}>
                             {
+                                labels ?
                                 labels.map(label => (
                                     <ListItem sx={{padding: 0}}>
                                         <ListItemButton onClick={() => handleLabelsSubmit(label.text)}>
                                             <ListItemText primary={label.text} />
                                         </ListItemButton>
                                     </ListItem>
-                                ))
+                                )) : ''
                             }
 
                         </List>

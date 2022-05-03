@@ -15,6 +15,6 @@ public class Comment {
     public virtual Card Card { get; set; }
     [JsonIgnore]
     public int CardId { get; set; }
-    
+
     public virtual List<Like> Likes { get; set; }
 }

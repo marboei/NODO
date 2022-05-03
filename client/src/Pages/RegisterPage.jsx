@@ -41,8 +41,8 @@ export default function LoginPage() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+        
+            <Container component="main" maxWidth="xs" sx={{backgroundColor: "#eeedde", borderRadius: '10px', height: '600px'}}>
                 <CssBaseline />
                 <Box
                     sx={{
@@ -52,7 +52,7 @@ export default function LoginPage() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: '#eeedde' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -190,6 +190,6 @@ export default function LoginPage() {
                     </Box>
                 </Box>
             </Container>
-        </ThemeProvider>
+       
     );
 }

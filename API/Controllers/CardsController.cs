@@ -24,15 +24,24 @@ public class CardsController : ControllerBase{
         if (_context.Projects.SingleOrDefault(p=>projectId == p.Id) == null) return NotFound($"No projects found with Id: {projectId}");
         if (_context.Columns.SingleOrDefault(c=>columnId == c.Id) == null) return NotFound($"No columns found with Id: {columnId}");
 
-        var cards = await _context.Cards.Where(c => c.ColumnId == columnId).OrderBy(c=> c.Order).ToListAsync();
+        var cards = await _context.Cards
+            .Include(c => c.AssignedTo)
+            .Include(c => c.Comments)
+            .Include(c => c.Labels)
+            .Where(c => c.ColumnId == columnId).OrderBy(c=> c.Order).ToListAsync();
         return Ok(cards);
     }
 
     [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}")]
     [HttpGet]
     public async Task<IActionResult> GetById(int projectId, int columnId, int cardId) {
-        var card = await _context.Cards.SingleOrDefaultAsync(c => c.Id == cardId);
-        return Ok(card);
+        var card = await _context.Cards
+            .Include(c => c.AssignedTo)
+            .Include(c => c.Comments)
+            .Include(c => c.Labels)
+            .Where(c => c.Id == cardId)
+            .ToListAsync();
+        return Ok(card[0]);
     }
     
     [Route("api/projects/{projectId}/columns/{columnId}/cards")]
@@ -45,7 +54,8 @@ public class CardsController : ControllerBase{
         var card = new Card {
             Title = dto.Title,
             ColumnId = columnId,
-            Order = dto.Order ?? 0
+            Order = dto.Order ?? 0,
+            Comments = new List<Comment>()
         };
         
         await _context.Cards.AddAsync(card);

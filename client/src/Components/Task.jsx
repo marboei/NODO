@@ -80,8 +80,10 @@ export const Task = ({task, handleDelete, handleUpdateTask, removeTaskAfterDrag}
     
     //changes the taskClicked state to true if a task is clicked 
     const handleTaskClick = async () => {
-        dispatch(setTask(await agent.task.getById(projectId, task.columnId, task.id)))
-        dispatch(setComments(await agent.comment.getAll(projectId, task.columnId, task.id)))
+        let Task = await agent.task.getById(projectId, task.columnId, task.id)
+        dispatch(setTask(Task))
+        let Comments = await agent.comment.getAll(projectId, task.columnId, task.id)
+        dispatch(setComments(Comments))
         console.log(task)
         setTaskClicked(true)
     };

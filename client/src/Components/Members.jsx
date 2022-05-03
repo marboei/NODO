@@ -26,6 +26,7 @@ export const Members = () => {
 
     const handleAddMember = async (user) => {
         const updatedProject = await agent.project.addUserToProject(projectId, user.id)
+        console.log(user)
         dispatch(setMembers(await agent.project.getProjectUsers(projectId)))
     }
 
@@ -39,7 +40,7 @@ export const Members = () => {
     }
     
     return (
-        <>
+        <div style={{textAlign:'center',}}>
             <AvatarGroup sx={{alignItems:'center', maxWidth: '300px'}} align='center'>
                 <PopupState variant="popover" popupId="assignTo">
                     {(popupState) => (
@@ -108,6 +109,6 @@ export const Members = () => {
                 }
             </AvatarGroup>
 
-        </>
+        </div>
     );
 };

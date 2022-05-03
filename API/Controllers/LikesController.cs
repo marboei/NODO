@@ -51,13 +51,14 @@ public class LikesController : ControllerBase {
     [HttpDelete]
     public async Task<IActionResult> DeleteComment(int projectId, int columnId, int cardId, int commentId, string userId) {
         if (_context.Comments != null) {
-            var comment = await _context.Comments.FindAsync(commentId);
+            var comment = await _context.Comments.Include(c=> c.Likes).Where(c=> c.Id == commentId).ToListAsync();
             if (comment != null) {
-                comment.Likes = comment.Likes.Where(l => !((l.CommentId == commentId) && (Equals(l.UserId, userId)))).ToList();
+                comment[0].Likes = comment[0].Likes.Where(l => !((l.CommentId == commentId) && (Equals(l.UserId, userId)))).ToList();
                 _context.SaveChanges();
-                return Ok(comment);
+                return Ok(comment[0]);
             }
         }
+        
 
         return NotFound();
     }

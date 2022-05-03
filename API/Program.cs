@@ -93,8 +93,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
+/*app.UseDefaultFiles();*/
+/*app.UseStaticFiles();*/
 
 app.UseCors(opt => {
     opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
@@ -104,6 +104,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapFallbackToController("Index", "Fallback");
+/*app.MapFallbackToController("Index", "Fallback");*/
 
 app.Run();

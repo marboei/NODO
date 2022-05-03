@@ -43,18 +43,19 @@ export default function LoginPage() {
     };
     
     return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+       
+            <Container component="main" maxWidth="xs" sx={{backgroundColor: "#eeedde", borderRadius: '10px', height: '500px'}}>
                 <CssBaseline />
                 <Box
                     sx={{
                         marginTop: 8,
+                        paddingTop: 3,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: '#eeedde' }}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -128,7 +129,7 @@ export default function LoginPage() {
                         </Button>
                         <Grid container>
                             <Grid item>
-                                <Link onClick={() => navigate("/register")} variant="body2">
+                                <Link onClick={() => navigate("/register")} variant="body2" sx={{'&:hover': {cursor: 'pointer'} }}>
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
@@ -136,6 +137,6 @@ export default function LoginPage() {
                     </Box>
                 </Box>
             </Container>
-        </ThemeProvider>
+      
     );
 }

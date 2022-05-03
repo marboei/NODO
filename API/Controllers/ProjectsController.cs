@@ -74,7 +74,7 @@ public class ProjectsController : ControllerBase {
     
     [HttpPost("{id}/user/{userId}")]
     public async Task<IActionResult> AddUser(int id, string userId) {
-        var project = await _context.Projects.SingleOrDefaultAsync(p => p.Id == id);
+        var project = await _context.Projects.Include(p => p.Users).Where(p => p.Id == id).ToListAsync();
         /*if (project == null) {
             return NotFound($"No projects found with Id: {id}");
         }*/
@@ -83,7 +83,7 @@ public class ProjectsController : ControllerBase {
         /*if (user == null) {
             return NotFound($"No users found with Id: {userId}");
         }*/
-        project?.Users?.Add(user);
+        project[0]?.Users?.Add(user);
         
         _context.SaveChanges();
 
@@ -92,7 +92,7 @@ public class ProjectsController : ControllerBase {
     
     [HttpDelete("{id}/user/{userId}")]
     public async Task<IActionResult> RemoveUser(int id, string userId) {
-        var project = await _context.Projects.SingleOrDefaultAsync(p => p.Id == id);
+        var project = await _context.Projects.Include(p => p.Users).Where(p => p.Id == id).ToListAsync();
         /*if (project == null) {
             return NotFound($"No projects found with Id: {id}");
         }*/
@@ -101,7 +101,7 @@ public class ProjectsController : ControllerBase {
         /*if (user == null) {
             return NotFound($"No users found with Id: {userId}");
         }*/
-        project?.Users?.Remove(user);
+        project[0]?.Users?.Remove(user);
         
         _context.SaveChanges();
 

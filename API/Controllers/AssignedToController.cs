@@ -29,18 +29,18 @@ public class AssignedToController : ControllerBase {
     [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}/assignedTo")]
     [HttpPost]
     public async Task<IActionResult> AddLabel(int projectId, int columnId, int cardId, [FromBody]AssignedToDto dto) {
-        var card = await _context.Cards.FindAsync(cardId);
-        if (card is not null) {
-            if (card.AssignedTo is null) {
-                card.AssignedTo = new List<User>();
+        var card = await _context.Cards.Include(c => c.AssignedTo).Where(c=> c.Id == cardId).ToListAsync();
+        if (card[0] is not null) {
+            if (card[0].AssignedTo is null) {
+                card[0].AssignedTo = new List<User>();
             }
 
             var userAsync = await _userManager.FindByIdAsync(dto.UserId);
 
-            card.AssignedTo.Add(userAsync);
+            card[0].AssignedTo.Add(userAsync);
             _context.SaveChanges();
 
-            return Ok(card);
+            return Ok(card[0]);
         }
         else {
             return NotFound();
@@ -50,9 +50,9 @@ public class AssignedToController : ControllerBase {
     [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}/assignedTo/{id}")]
     [HttpDelete]
     public async Task<IActionResult> DeleteComment(int projectId, int columnId, int cardId, string id) {
-        var card = await _context.Cards.FindAsync(cardId);
-        card.AssignedTo = card.AssignedTo.Where(u => u.Id != id).ToList();
+        var card = await _context.Cards.Include(c => c.AssignedTo).Where(c=> c.Id == cardId).ToListAsync();
+        card[0].AssignedTo = card[0].AssignedTo.Where(u => u.Id != id).ToList();
         _context.SaveChanges();
-        return Ok(card);
+        return Ok(card[0]);
     }
 }

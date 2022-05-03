@@ -21,8 +21,9 @@ public class CommentsController : ControllerBase {
     [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}/comments")]
     [HttpGet]
     public async Task<IActionResult> GetComments(int projectId, int columnId, int cardId) {
-        var comments = await _context.Cards.Include(c => c.Comments).Where(c => c.Id == cardId).Select(c => c.Comments).ToListAsync();
-        return Ok(comments.Count > 0 ? comments[0] : null);
+        var comments = await _context.Comments.Include(c => c.User).Include(c => c.Likes).Where(c => c.CardId == cardId).ToListAsync();
+        
+        return Ok(comments);
     }
     
     [Route("api/projects/{projectId}/columns/{columnId}/cards/{cardId}/comments")]

@@ -7,8 +7,41 @@
   <component name="ChangeListManager">
     <list default="true" id="6e736347-4f14-4aac-84ed-c1a36c779a65" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NoDo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/AssignedToController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/AssignedToController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/CardsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CardsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/CommentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/CommentsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/LikesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/LikesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Controllers/ProjectsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Data/ApplicationDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Data/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Data/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Card.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/Models/Comment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Models/Comment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/10.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/8.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/9.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Comment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Comment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/LabelsEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/LabelsEdit.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Members.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Members.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/SearchMembers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SearchMembers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Task.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/TaskDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/TaskDetails.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/RegisterPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +86,7 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.API">
+  <component name="RunManager" selected="Native Executable.client">
     <configuration name="API" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/API/API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
@@ -183,7 +216,8 @@
       <workItem from="1651434461925" duration="23731000" />
       <workItem from="1651468763481" duration="2454000" />
       <workItem from="1651529492835" duration="4018000" />
-      <workItem from="1651534432042" duration="1321000" />
+      <workItem from="1651534432042" duration="1815000" />
+      <workItem from="1651537079182" duration="14610000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1645400799268</created>
@@ -326,7 +360,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/Pages/ProjectPage.jsx</url>
-          <line>6</line>
+          <line>18</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -58,27 +58,13 @@ export const Comment = ({username, name, text, comment}) => {
     const handleCommentLike = async() => {
         const newComment = await agent.like.add(projectId, task.columnId, task.id, comment.id, {userId: user.id})
         console.log(comments)
-        let newComments = [] 
-        comments.forEach(comment => {
-            if(comment.id === newComment.id){
-                newComments.push(newComment)
-            } else {
-                newComments.push(comment)
-            }
-        })
+        let newComments = await agent.comment.getAll(projectId, task.columnId, task.id)
         dispatch(setComments(newComments))
     }
     
     const handleCommentUnlike = async() => {
         const newComment = await agent.like.delete(projectId, task.columnId, task.id, comment.id, user.id)
-        let newComments = []
-        comments.forEach(comment => {
-            if(comment.id === newComment.id){
-                newComments.push(newComment)
-            } else {
-                newComments.push(comment)
-            }
-        })
+        let newComments = await agent.comment.getAll(projectId, task.columnId, task.id)
         dispatch(setComments(newComments))
     }
     

@@ -41,7 +41,7 @@ function App() {
               <BrowserRouter>
                   <Toolbar/>
                   <Routes>
-                      <Route path="/" element={<ViewPage/>}/>
+                      <Route path="/" element={JSON.parse(localStorage.getItem('user')) ? <ViewPage/> : <LoginPage/>}/>
                       <Route path="/projects/:projectId" element={<ProjectPage/>}/>
                       <Route path="/login" element={<LoginPage/>}/>
                       <Route path="/register" element={<RegisterPage/>}/>

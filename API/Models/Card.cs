@@ -22,8 +22,8 @@ public class Card {
     public virtual List<Label>? Labels { get; set; }
     
     public DateTime? DueDate { get; set; }
-    [JsonIgnore]
-    public virtual List<Comment>? Comments { get; set; }
+    
+    public virtual List<Comment> Comments { get; set; }
     
     public int Order { get; set; }
     

@@ -22,4 +22,17 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\asset-manifest.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\favicon.ico" />
+      <_ContentIncludedByDefault Remove="wwwroot\index.html" />
+      <_ContentIncludedByDefault Remove="wwwroot\manifest.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\robots.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\static\css\main.34e616b3.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\static\css\main.34e616b3.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\static\js\main.e4515566.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\static\js\main.e4515566.js.LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\static\js\main.e4515566.js.map" />
+    </ItemGroup>
+
 </Project>
